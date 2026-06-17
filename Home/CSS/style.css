@@ -90,6 +90,35 @@ body{
     box-shadow:
     0 12px 25px rgba(8, 197, 255, 0.35);
 }
+.panico-boton button{
+     background: linear-gradient(
+        135deg,
+        #e23409,
+        #f70000
+    );
+
+    color: rgb(255, 255, 255);
+    border: none;
+
+    padding: 14px 30px;
+
+    border-radius: 15px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+    0 8px 20px rgba(13,110,253,0.25);
+
+    transition: all 0.3s ease;
+}
+.panico-boton button:hover{
+    transform: translateY(-3px);
+    box-shadow: rgb(252, 40, 2);
+}
+
 /* H */
 
 .hero{

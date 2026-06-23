@@ -1,4 +1,4 @@
-document.getElementById("boton-panico").addEventListener("click", function() {
+document.getElementById("panico-boton").addEventListener("click", function() {
   // Funcion del boton de panico
   activarBotonPanico();
 });

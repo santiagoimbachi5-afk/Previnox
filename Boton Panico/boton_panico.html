@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provinex</title>
+    <link rel="stylesheet" href="CSS/boton_panico.css">
+</head>
+<body>
+
+    <h1>PROVINEX</h1>
+
+    <h2>No estás solo</h2>
+
+    <p class="mensaje">
+        Si estás pasando por un momento difícil, tienes ansiedad,
+        deseos de consumir o sientes que podrías recaer,
+        puedes solicitar ayuda inmediata.
+    </p>
+
+    <button id="btnPanico" onclick="activarPanico()">
+        🚨
+    </button>
+
+    <p class="textoBoton">
+        Presiona para solicitar ayuda
+    </p>
+
+    <p id="estado"></p>
+
+    <script>
+        function activarPanico() {
+
+            const fecha = new Date().toLocaleString();
+
+            document.getElementById("estado").innerHTML =
+                "✅ Tu solicitud de ayuda fue enviada.<br><br>" +
+                "Mantente en un lugar seguro. Un contacto de apoyo será notificado.<br><br>" +
+                "Hora del evento: " + fecha;
+
+            document.getElementById("btnPanico").disabled = true;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <h1>Crear Cuenta</h1>
+
+    <p class="texto">
+        Completa el formulario para registrarte en la plataforma.
+    </p>
+    <form>
+        <label>Nombre completo</label>
+
+        <section>
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Ingresa tu nombre" required>
+        </section>
+        <label>Correo electrónico</label>
+
+        <section>
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Ingresa tu correo" required>
+        </section>
+        <label>Teléfono</label>
+
+        <section>
+            <i class="fa-solid fa-phone"></i>
+            <input type="tel" placeholder="Ingresa tu teléfono">
+        </section>
+        <label>Contraseña</label>
+
+        <section>
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Ingresa tu contraseña" required>
+        </section>
+        <label>Confirmar contraseña</label>
+
+        <section>
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Confirma tu contraseña" required>
+        </section>
+        <article>
+            <input type="checkbox" required>
+            <span>Acepto los términos y condiciones</span>
+        </article>
+        <button type="submit">
+            Registrarse
+        </button>
+
+    </form>
+
+    <footer>
+        ¿Ya tienes cuenta?
+        <a href="#">Iniciar sesión</a>
+    </footer>
+
+</body>
+</html>

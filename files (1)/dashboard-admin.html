@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provinex — Panel Administrador</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g950:#0d6efd;--g900:#6092ff;--g800:#0055ff;--g700:#1087ff;--g600:#7b74ff;
+  --brand:#2b96ef;--brand-l:#0aa9ff;--brand-d:#2375f1;--brand-bg:#EAF7F1;--brand-mid:#ffffff;
+  --red:#E53E3E;--red-d:#C53030;--red-bg:#FFF5F5;--red-mid:#FEB2B2;
+  --blue:#3182CE;--blue-bg:#ffffff;--blue-mid:#90CDF4;--blue-d:#2B6CB0;
+  --amber:#D69E2E;--amber-bg:#FFFBEB;--amber-mid:#FAD689;--amber-d:#B7791F;
+  --purple:#6B46C1;--purple-bg:#FAF5FF;--purple-mid:#353339;
+  --coral:#E05252;--coral-bg:#FFF0F0;
+  --green:#2f6eff;--green-bg:#F0FFF4;
+  --slate:#64748B;--slate-l:#94A3B8;--slate-bg:#F8FAFC;
+  --white:#FFFFFF;--border:#E2E8F0;--border-d:#CBD5E0;
+  --txt:#1A202C;--txt-s:#4A5568;--txt-m:#718096;
+  --r4:4px;--r8:8px;--r12:12px;--r16:16px;--r99:999px;
+}
+body{font-family:'Inter',sans-serif;background:#EEF2EF;color:var(--txt);display:flex;min-height:100vh}
+
+/* SIDEBAR */
+.sb{width:248px;background:var(--g950);min-height:100vh;position:fixed;left:0;top:0;display:flex;flex-direction:column;z-index:50}
+.sb-brand{padding:22px 20px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
+.sb-logo{font-family:'Fraunces',serif;font-size:24px;font-weight:400;color:var(--brand-mid);letter-spacing:-.4px}
+.sb-pill{display:inline-block;margin-top:6px;background:var(--g700);color:var(--brand-mid);font-size:10px;padding:2px 9px;border-radius:var(--r99);letter-spacing:.5px}
+.sb-user{padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.sb-ava{width:36px;height:36px;border-radius:50%;background:var(--g600);border:2px solid var(--brand-d);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--brand-mid);flex-shrink:0}
+.sb-uname{font-size:13px;font-weight:500;color:rgba(255,255,255,.85)}
+.sb-urole{font-size:11px;color:rgba(255,255,255,.32);margin-top:1px}
+.sb-nav{padding:10px 8px;flex:1;overflow-y:auto}
+.sb-lbl{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 10px;margin:12px 0 4px}
+.sb-lbl:first-child{margin-top:0}
+.sb-a{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--r8);font-size:12.5px;color:rgba(255,255,255,.45);cursor:pointer;transition:all .12s;margin-bottom:1px}
+.sb-a:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)}
+.sb-a.on{background:var(--g700);color:var(--brand-mid)}
+.sb-a i{font-size:15px;flex-shrink:0}
+.sb-badge{margin-left:auto;font-size:10px;font-weight:600;padding:1px 6px;border-radius:var(--r99)}
+.sb-n{background:rgba(255,255,255,.1);color:rgba(255,255,255,.4)}
+.sb-alert{background:var(--red);color:#fff}
+.sb-warn{background:var(--amber);color:#fff}
+.sb-foot{padding:8px 8px 12px;border-top:1px solid rgba(255,255,255,.06)}
+
+/* MAIN */
+.main{margin-left:248px;flex:1;padding:26px 30px;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.top-h{font-size:20px;font-weight:500}
+.top-s{font-size:13px;color:var(--txt-s);margin-top:2px}
+.top-r{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:var(--r8);font-size:12.5px;font-weight:500;cursor:pointer;border:none;font-family:inherit;transition:all .12s}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-d)}
+.btn-ghost{background:#fff;color:var(--txt-s);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--slate-bg)}
+.btn-sm{padding:5px 10px;font-size:11.5px}
+.btn-red{background:var(--red-bg);color:var(--red-d);border:1px solid var(--red-mid)}
+
+/* ALERT BANNER */
+.alert-banner{background:var(--red-bg);border:1px solid var(--red-mid);border-radius:var(--r12);padding:12px 18px;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.alert-banner i{font-size:20px;color:var(--red);flex-shrink:0}
+.alert-banner-text{flex:1;font-size:13px;color:var(--red-d)}
+.alert-banner-text strong{font-weight:600}
+.alert-banner-actions{display:flex;gap:7px}
+
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.kcard{background:#fff;border-radius:var(--r12);padding:16px;border:1px solid var(--border);position:relative;overflow:hidden}
+.kcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.kc-g::after{background:var(--brand)}
+.kc-b::after{background:var(--blue)}
+.kc-a::after{background:var(--amber)}
+.kc-r::after{background:var(--red)}
+.kc-p::after{background:var(--purple)}
+.klbl{font-size:10.5px;color:var(--txt-m);margin-bottom:7px}
+.kval{font-size:27px;font-weight:500;line-height:1}
+.kc-g .kval{color:var(--brand-d)}
+.kc-b .kval{color:var(--blue-d)}
+.kc-a .kval{color:var(--amber-d)}
+.kc-r .kval{color:var(--red-d)}
+.kc-p .kval{color:var(--purple)}
+.kdelta{font-size:11px;margin-top:6px}
+.kd-up{color:var(--green)}
+.kd-dn{color:var(--red)}
+.kd-n{color:var(--txt-m)}
+
+/* LAYOUT */
+.row-2{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:14px}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.row-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:#fff;border-radius:var(--r12);border:1px solid var(--border);overflow:hidden}
+.card-head{padding:13px 16px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card-title{font-size:13px;font-weight:500;display:flex;align-items:center;gap:7px;color:var(--txt)}
+.card-title i{font-size:14px;color:var(--brand)}
+.card-link{font-size:12px;color:var(--brand);cursor:pointer;background:none;border:none;font-family:inherit;white-space:nowrap}
+.card-link:hover{text-decoration:underline}
+
+/* TABLA USUARIOS */
+.utab{width:100%;border-collapse:collapse}
+.utab th{font-size:10.5px;color:var(--txt-m);text-transform:uppercase;letter-spacing:.5px;padding:9px 16px;text-align:left;border-bottom:1px solid var(--border);background:var(--slate-bg);font-weight:500}
+.utab td{padding:11px 16px;font-size:12.5px;border-bottom:1px solid var(--border);vertical-align:middle}
+.utab tr:last-child td{border-bottom:none}
+.utab tbody tr:hover{background:var(--slate-bg)}
+.ucell{display:flex;align-items:center;gap:9px}
+.uava{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+.ug{background:var(--brand-bg);color:var(--brand-d)}
+.ub{background:var(--blue-bg);color:var(--blue-d)}
+.ua{background:var(--amber-bg);color:var(--amber-d)}
+.ur{background:var(--red-bg);color:var(--red-d)}
+.up{background:var(--purple-bg);color:var(--purple)}
+.uname{font-size:12.5px;font-weight:500;color:var(--txt)}
+.uemail{font-size:11px;color:var(--txt-m)}
+.dias-badge{display:inline-flex;align-items:center;gap:3px;font-size:11.5px;font-weight:500;padding:2px 9px;border-radius:var(--r99)}
+.db-hi{background:var(--brand-bg);color:var(--brand-d)}
+.db-md{background:var(--blue-bg);color:var(--blue-d)}
+.db-lo{background:var(--amber-bg);color:var(--amber-d)}
+.db-rk{background:var(--red-bg);color:var(--red-d)}
+.spill{font-size:11px;padding:2px 8px;border-radius:var(--r99)}
+.s-activo{background:var(--green-bg);color:var(--green)}
+.s-riesgo{background:var(--red-bg);color:var(--red-d)}
+.s-nuevo{background:var(--purple-bg);color:var(--purple)}
+.s-seg{background:var(--amber-bg);color:var(--amber-d)}
+.acbtn{font-size:11px;padding:3px 9px;border-radius:var(--r8);border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--txt-s);font-family:inherit;display:inline-flex;align-items:center;gap:3px;transition:all .1s}
+.acbtn:hover{background:var(--slate-bg)}
+.acbtn.danger{background:var(--red-bg);border-color:var(--red-mid);color:var(--red-d)}
+
+/* ALERTAS */
+.alert-i{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
+.alert-i:last-child{border-bottom:none}
+.alert-ico{width:30px;height:30px;border-radius:var(--r8);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
+.ai-r{background:var(--red-bg);color:var(--red)}
+.ai-a{background:var(--amber-bg);color:var(--amber)}
+.ai-b{background:var(--blue-bg);color:var(--blue)}
+.ai-g{background:var(--brand-bg);color:var(--brand-d)}
+.ai-p{background:var(--purple-bg);color:var(--purple)}
+.alert-text{flex:1}
+.alert-title{font-size:12.5px;font-weight:500}
+.alert-sub{font-size:11.5px;color:var(--txt-s);margin-top:2px;line-height:1.4}
+.alert-time{font-size:10.5px;color:var(--txt-m);flex-shrink:0;margin-top:2px}
+.alert-actions{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.aa-btn{font-size:10.5px;padding:2px 8px;border-radius:var(--r99);border:1px solid var(--border);background:#fff;cursor:pointer;font-family:inherit;color:var(--txt-s);transition:all .1s}
+.aa-btn:hover{background:var(--slate-bg)}
+.aa-btn.red{background:var(--red-bg);border-color:var(--red-mid);color:var(--red-d)}
+.aa-btn.green{background:var(--brand-bg);border-color:var(--brand-mid);color:var(--brand-d)}
+
+/* REPORTES */
+.rep-i{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.rep-i:last-child{border-bottom:none}
+.rep-ico{width:30px;height:30px;border-radius:var(--r8);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.ri-g{background:var(--brand-bg);color:var(--brand-d)}
+.ri-b{background:var(--blue-bg);color:var(--blue-d)}
+.ri-a{background:var(--amber-bg);color:var(--amber-d)}
+.ri-p{background:var(--purple-bg);color:var(--purple)}
+.rep-info{flex:1}
+.rep-title{font-size:12.5px;font-weight:500}
+.rep-meta{font-size:11px;color:var(--txt-m);margin-top:1px}
+.rep-tag{font-size:10.5px;padding:2px 8px;border-radius:var(--r99);flex-shrink:0}
+.rt-ok{background:var(--brand-bg);color:var(--brand-d)}
+.rt-pend{background:var(--amber-bg);color:var(--amber-d)}
+
+/* CONTENIDO / APROBACIÓN */
+.cont-i{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
+.cont-i:last-child{border-bottom:none}
+.cont-ico{width:30px;height:30px;border-radius:var(--r8);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.ci-b{background:var(--blue-bg);color:var(--blue)}
+.ci-g{background:var(--brand-bg);color:var(--brand-d)}
+.ci-a{background:var(--amber-bg);color:var(--amber-d)}
+.cont-info{flex:1}
+.cont-title{font-size:12.5px;font-weight:500}
+.cont-meta{font-size:11px;color:var(--txt-m);margin-top:2px}
+.cont-actions{display:flex;gap:5px;margin-top:7px}
+.ca-btn{font-size:11px;padding:3px 10px;border-radius:var(--r8);border:none;cursor:pointer;font-family:inherit;font-weight:500;transition:all .12s}
+.ca-ok{background:var(--brand-bg);color:var(--brand-d)}
+.ca-ok:hover{background:var(--brand-mid)}
+.ca-no{background:var(--red-bg);color:var(--red-d)}
+.ca-no:hover{background:var(--red-mid)}
+.ca-rev{background:var(--slate-bg);color:var(--txt-s);border:1px solid var(--border)}
+
+/* PROFESIONALES */
+.prof-i{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.prof-i:last-child{border-bottom:none}
+.pava{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
+.pg{background:var(--brand-bg);color:var(--brand-d)}
+.pb{background:var(--blue-bg);color:var(--blue-d)}
+.pp{background:var(--purple-bg);color:var(--purple)}
+.pa{background:var(--amber-bg);color:var(--amber-d)}
+.prof-info{flex:1}
+.prof-name{font-size:12.5px;font-weight:500}
+.prof-rol{font-size:11px;color:var(--txt-m);margin-top:1px}
+.prof-carga{display:flex;align-items:center;gap:7px}
+.carga-num{font-size:12px;font-weight:500;color:var(--txt)}
+.carga-bar{width:55px;height:4px;background:var(--border);border-radius:var(--r99)}
+.carga-fill{height:4px;border-radius:var(--r99)}
+.cf-ok{background:var(--brand)}
+.cf-med{background:var(--amber)}
+.cf-hi{background:var(--red)}
+
+/* REUNIONES ADMIN */
+.reun-i{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.reun-i:last-child{border-bottom:none}
+.reun-fecha{width:36px;height:36px;border-radius:var(--r8);background:var(--brand-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.rf-d{font-size:14px;font-weight:600;color:var(--brand-d);line-height:1}
+.rf-m{font-size:8px;text-transform:uppercase;color:var(--brand);letter-spacing:.3px}
+.reun-info{flex:1}
+.reun-name{font-size:12.5px;font-weight:500}
+.reun-meta{font-size:11px;color:var(--txt-m);margin-top:1px}
+.reun-ins{font-size:11px;font-weight:500;background:var(--slate-bg);color:var(--txt-s);padding:2px 8px;border-radius:var(--r99);white-space:nowrap}
+
+/* ENTIDADES */
+.ent-i{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.ent-i:last-child{border-bottom:none}
+.ent-logo{width:32px;height:32px;border-radius:var(--r8);border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ent-info{flex:1}
+.ent-name{font-size:12.5px;font-weight:500}
+.ent-tipo{font-size:11px;color:var(--txt-m);margin-top:1px}
+.ent-users{font-size:11.5px;font-weight:500;color:var(--brand-d);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sb">
+  <div class="sb-brand">
+    <div class="sb-logo">Provinex</div>
+    <div class="sb-pill">Administrador</div>
+  </div>
+  <div class="sb-user">
+    <div class="sb-ava">SI</div>
+    <div>
+      <div class="sb-uname">Santiago Imbachi</div>
+      <div class="sb-urole">Administrador general</div>
+    </div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-lbl">Resumen</div>
+    <a class="sb-a on"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+    <a class="sb-a"><i class="ti ti-activity"></i> Actividad en tiempo real</a>
+    <div class="sb-lbl">Usuarios</div>
+    <a class="sb-a"><i class="ti ti-users"></i> Gestionar usuarios <span class="sb-badge sb-n">48</span></a>
+    <a class="sb-a"><i class="ti ti-alert-triangle"></i> En riesgo <span class="sb-badge sb-alert">3</span></a>
+    <a class="sb-a"><i class="ti ti-user-plus"></i> Nuevos registros <span class="sb-badge sb-n">5</span></a>
+    <div class="sb-lbl">Gestión clínica</div>
+    <a class="sb-a"><i class="ti ti-stethoscope"></i> Asignar profesionales</a>
+    <a class="sb-a"><i class="ti ti-clipboard-list"></i> Planes de tratamiento</a>
+    <a class="sb-a"><i class="ti ti-sos"></i> Alertas de pánico <span class="sb-badge sb-alert">2</span></a>
+    <div class="sb-lbl">Operaciones</div>
+    <a class="sb-a"><i class="ti ti-users-group"></i> Reuniones</a>
+    <a class="sb-a"><i class="ti ti-calendar-event"></i> Talleres y eventos</a>
+    <a class="sb-a"><i class="ti ti-building-hospital"></i> Entidades de salud</a>
+    <div class="sb-lbl">Contenido y reportes</div>
+    <a class="sb-a"><i class="ti ti-file-check"></i> Aprobar contenido <span class="sb-badge sb-warn">4</span></a>
+    <a class="sb-a"><i class="ti ti-chart-bar"></i> Reportes</a>
+    <div class="sb-lbl">Sistema</div>
+    <a class="sb-a"><i class="ti ti-settings"></i> Configuración</a>
+  </nav>
+  <div class="sb-foot">
+    <a class="sb-a"><i class="ti ti-logout"></i> Cerrar sesión</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TOPBAR -->
+  <div class="top">
+    <div>
+      <div class="top-h">Panel de administración</div>
+      <div class="top-s">Miércoles 25 de junio · Última sincronización hace 3 min</div>
+    </div>
+    <div class="top-r">
+      <button class="btn btn-ghost"><i class="ti ti-download"></i> Exportar</button>
+      <button class="btn btn-ghost"><i class="ti ti-bell"></i> Alertas <span style="background:var(--red);color:#fff;font-size:10px;padding:1px 5px;border-radius:var(--r99);margin-left:2px">5</span></button>
+      <button class="btn btn-primary"><i class="ti ti-user-plus"></i> Nuevo usuario</button>
+    </div>
+  </div>
+
+  <!-- ALERTA CRÍTICA PÁNICO -->
+  <div class="alert-banner">
+    <i class="ti ti-sos"></i>
+    <div class="alert-banner-text">
+      <strong>Botón de pánico activado</strong> — Julián Pérez envió una alerta de crisis hace 8 minutos. Ubicación: Cl. 80 #13-25, Bogotá. 6:52 PM. Profesional asignado aún no ha respondido.
+    </div>
+    <div class="alert-banner-actions">
+      <button class="btn btn-red btn-sm"><i class="ti ti-phone"></i> Contactar ahora</button>
+      <button class="btn btn-ghost btn-sm"><i class="ti ti-eye"></i> Ver detalle</button>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kcard kc-g">
+      <div class="klbl">Usuarios activos</div>
+      <div class="kval">48</div>
+      <div class="kdelta kd-up"><i class="ti ti-arrow-up-right" style="font-size:10px"></i> +5 este mes</div>
+    </div>
+    <div class="kcard kc-b">
+      <div class="klbl">Reuniones este mes</div>
+      <div class="kval">24</div>
+      <div class="kdelta kd-up">92% asistencia</div>
+    </div>
+    <div class="kcard kc-a">
+      <div class="klbl">Contenido por aprobar</div>
+      <div class="kval">4</div>
+      <div class="kdelta kd-n">2 guías · 2 talleres</div>
+    </div>
+    <div class="kcard kc-r">
+      <div class="klbl">Usuarios en riesgo</div>
+      <div class="kval">3</div>
+      <div class="kdelta kd-dn"><i class="ti ti-alert-triangle" style="font-size:10px"></i> Requieren atención</div>
+    </div>
+    <div class="kcard kc-p">
+      <div class="klbl">Promedio días en proceso</div>
+      <div class="kval">61</div>
+      <div class="kdelta kd-up">+8 vs mes anterior</div>
+    </div>
+  </div>
+
+  <!-- FILA 1: TABLA USUARIOS + ALERTAS -->
+  <div class="row-2">
+
+    <!-- Tabla usuarios -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="ti ti-users"></i> Usuarios — vista general</div>
+        <button class="card-link">Ver todos (48)</button>
+      </div>
+      <table class="utab">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Días proceso</th>
+            <th>Estado</th>
+            <th>Profesional</th>
+            <th>Última actividad</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="ucell"><div class="uava ug">CA</div><div><div class="uname">Carlos Andrade</div><div class="uemail">c.andrade@mail.com</div></div></div></td>
+            <td><span class="dias-badge db-hi">72 días</span></td>
+            <td><span class="spill s-activo">Activo</span></td>
+            <td style="font-size:12px;color:var(--txt-s)">Dra. Mora</td>
+            <td style="font-size:11.5px;color:var(--txt-m)">Hace 2h</td>
+            <td><button class="acbtn"><i class="ti ti-eye" style="font-size:11px"></i> Ver</button></td>
+          </tr>
+          <tr>
+            <td><div class="ucell"><div class="uava ub">LM</div><div><div class="uname">Luisa Martínez</div><div class="uemail">luisa.m@gmail.com</div></div></div></td>
+            <td><span class="dias-badge db-hi">134 días</span></td>
+            <td><span class="spill s-activo">Activo</span></td>
+            <td style="font-size:12px;color:var(--txt-s)">Dr. Gómez</td>
+            <td style="font-size:11.5px;color:var(--txt-m)">Hoy</td>
+            <td><button class="acbtn"><i class="ti ti-eye" style="font-size:11px"></i> Ver</button></td>
+          </tr>
+          <tr>
+            <td><div class="ucell"><div class="uava ur">JP</div><div><div class="uname">Julián Pérez</div><div class="uemail">julian.p@mail.co</div></div></div></td>
+            <td><span class="dias-badge db-rk">8 días</span></td>
+            <td><span class="spill s-riesgo">En riesgo</span></td>
+            <td style="font-size:12px;color:var(--red-d);font-weight:500">Sin asignar</td>
+            <td style="font-size:11.5px;color:var(--txt-m)">Hace 3 días</td>
+            <td><button class="acbtn danger"><i class="ti ti-alert-circle" style="font-size:11px"></i> Atender</button></td>
+          </tr>
+          <tr>
+            <td><div class="ucell"><div class="uava ua">VR</div><div><div class="uname">Valentina Roa</div><div class="uemail">vroa@hotmail.com</div></div></div></td>
+            <td><span class="dias-badge db-md">45 días</span></td>
+            <td><span class="spill s-seg">Seguimiento</span></td>
+            <td style="font-size:12px;color:var(--txt-s)">Dra. Mora</td>
+            <td style="font-size:11.5px;color:var(--txt-m)">Ayer</td>
+            <td><button class="acbtn"><i class="ti ti-eye" style="font-size:11px"></i> Ver</button></td>
+          </tr>
+          <tr>
+            <td><div class="ucell"><div class="uava up">DG</div><div><div class="uname">Daniel Guerrero</div><div class="uemail">d.guerrero@uni.edu.co</div></div></div></td>
+            <td><span class="dias-badge db-lo">2 días</span></td>
+            <td><span class="spill s-nuevo">Nuevo</span></td>
+            <td style="font-size:12px;color:var(--amber-d);font-weight:500">Pendiente</td>
+            <td style="font-size:11.5px;color:var(--txt-m)">Hoy</td>
+            <td><button class="acbtn"><i class="ti ti-edit" style="font-size:11px"></i> Configurar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Alertas del sistema -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="ti ti-bell-ringing"></i> Alertas del sistema</div>
+        <button class="card-link">Ver todas (12)</button>
+      </div>
+      <div class="alert-i">
+        <div class="alert-ico ai-r"><i class="ti ti-sos"></i></div>
+        <div class="alert-text">
+          <div class="alert-title">Botón de pánico — Julián Pérez</div>
+          <div class="alert-sub">Crisis emocional activa. Ubicación registrada. Requiere intervención inmediata.</div>
+          <div class="alert-actions">
+            <button class="aa-btn red">Atender</button>
+            <button class="aa-btn">Escalar</button>
+            <button class="aa-btn">Ver registro</button>
+          </div>
+        </div>
+        <div class="alert-time">8 min</div>
+      </div>
+      <div class="alert-i">
+        <div class="alert-ico ai-r"><i class="ti ti-user-x"></i></div>
+        <div class="alert-text">
+          <div class="alert-title">Cambio crítico — Marco Ruiz</div>
+          <div class="alert-sub">Sistema detectó cambio en estado emocional. Padrino reportó señales de recaída.</div>
+          <div class="alert-actions">
+            <button class="aa-btn red">Investigar</button>
+            <button class="aa-btn">Confirmar</button>
+          </div>
+        </div>
+        <div class="alert-time">1h</div>
+      </div>
+      <div class="alert-i">
+        <div class="alert-ico ai-a"><i class="ti ti-calendar-x"></i></div>
+        <div class="alert-text">
+          <div class="alert-title">4 usuarios sin profesional asignado</div>
+          <div class="alert-sub">Nuevos registros pendientes de asignación según competencias y disponibilidad.</div>
+          <div class="alert-actions">
+            <button class="aa-btn green">Asignar</button>
+            <button class="aa-btn">Archivar</button>
+          </div>
+        </div>
+        <div class="alert-time">3h</div>
+      </div>
+      <div class="alert-i">
+        <div class="alert-ico ai-b"><i class="ti ti-file-alert"></i></div>
+        <div class="alert-text">
+          <div class="alert-title">Convenio EPS Sanitas — vence pronto</div>
+          <div class="alert-sub">Renovación el 15 de julio. 20 días restantes. Gestionar con anticipación.</div>
+          <div class="alert-actions">
+            <button class="aa-btn">Atendido</button>
+            <button class="aa-btn">Archivar</button>
+          </div>
+        </div>
+        <div class="alert-time">Ayer</div>
+      </div>
+      <div class="alert-i">
+        <div class="alert-ico ai-g"><i class="ti ti-trophy"></i></div>
+        <div class="alert-text">
+          <div class="alert-title">Luisa Martínez — 4 meses en proceso</div>
+          <div class="alert-sub">Hito alcanzado. Reconocimiento pendiente de enviar al usuario.</div>
+          <div class="alert-actions">
+            <button class="aa-btn green">Enviar mensaje</button>
+            <button class="aa-btn">Archivar</button>
+          </div>
+        </div>
+        <div class="alert-time">Ayer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: APROBAR CONTENIDO + ASIGNAR PROFESIONALES -->
+  <div class="row-2">
+
+    <!-- Aprobación de contenido -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="ti ti-file-check"></i> Contenido pendiente de aprobación</div>
+        <button class="card-link">Ver todos (4)</button>
+      </div>
+      <div class="cont-i">
+        <div class="cont-ico ci-g"><i class="ti ti-book-2"></i></div>
+        <div class="cont-info">
+          <div class="cont-title">Guía: Prevención de recaídas — v2</div>
+          <div class="cont-meta">Enviado por Dra. Mora · hace 2h · Categoría: Autocuidado</div>
+          <div class="cont-actions">
+            <button class="ca-btn ca-ok">Aprobar</button>
+            <button class="ca-btn ca-no">Rechazar</button>
+            <button class="ca-btn ca-rev">Revisar</button>
+          </div>
+        </div>
+      </div>
+      <div class="cont-i">
+        <div class="cont-ico ci-b"><i class="ti ti-school"></i></div>
+        <div class="cont-info">
+          <div class="cont-title">Taller virtual: Mindfulness y recaída</div>
+          <div class="cont-meta">Enviado por Dr. Gómez · hace 5h · Modalidad: Online · Zoom</div>
+          <div class="cont-actions">
+            <button class="ca-btn ca-ok">Aprobar</button>
+            <button class="ca-btn ca-no">Rechazar</button>
+            <button class="ca-btn ca-rev">Revisar</button>
+          </div>
+        </div>
+      </div>
+      <div class="cont-i">
+        <div class="cont-ico ci-g"><i class="ti ti-users-group"></i></div>
+        <div class="cont-info">
+          <div class="cont-title">Recomendaciones de apoyo familiar — actualización</div>
+          <div class="cont-meta">Enviado por equipo psicosocial · Ayer · Categorías: 3</div>
+          <div class="cont-actions">
+            <button class="ca-btn ca-ok">Aprobar</button>
+            <button class="ca-btn ca-no">Rechazar</button>
+            <button class="ca-btn ca-rev">Revisar</button>
+          </div>
+        </div>
+      </div>
+      <div class="cont-i">
+        <div class="cont-ico ci-a"><i class="ti ti-message-report"></i></div>
+        <div class="cont-info">
+          <div class="cont-title">Plantilla de mensaje automático — Semana 4</div>
+          <div class="cont-meta">Enviado por equipo clínico · hace 3 días · Canal: Email + App</div>
+          <div class="cont-actions">
+            <button class="ca-btn ca-ok">Aprobar</button>
+            <button class="ca-btn ca-no">Rechazar</button>
+            <button class="ca-btn ca-rev">Revisar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asignación de profesionales -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="ti ti-stethoscope"></i> Profesionales — carga asignada</div>
+        <button class="btn btn-primary btn-sm"><i class="ti ti-plus"></i> Asignar</button>
+      </div>
+      <div class="prof-i">
+        <div class="pava pg">DM</div>
+        <div class="prof-info">
+          <div class="prof-name">Dra. Diana Mora</div>
+          <div class="prof-rol">Psicóloga · 14 pacientes</div>
+        </div>
+        <div class="prof-carga">
+          <div class="carga-bar"><div class="carga-fill cf-med" style="width:70%"></div></div>
+          <span class="carga-num">14/20</span>
+        </div>
+      </div>
+      <div class="prof-i">
+        <div class="pava pb">MG</div>
+        <div class="prof-info">
+          <div class="prof-name">Dr. Mauricio Gómez</div>
+          <div class="prof-rol">Médico tratante · 9 pacientes</div>
+        </div>
+        <div class="prof-carga">
+          <div class="carga-bar"><div class="carga-fill cf-ok" style="width:45%"></div></div>
+          <span class="carga-num">9/20</span>
+        </div>
+      </div>
+      <div class="prof-i">
+        <div class="pava pp">SR</div>
+        <div class="prof-info">
+          <div class="prof-name">Sofía Ramos</div>
+          <div class="prof-rol">Trabajadora social · 18 pacientes</div>
+        </div>
+        <div class="prof-carga">
+          <div class="carga-bar"><div class="carga-fill cf-hi" style="width:90%"></div></div>
+          <span class="carga-num">18/20</span>
+        </div>
+      </div>
+      <div class="prof-i">
+        <div class="pava pa">HV</div>
+        <div class="prof-info">
+          <div class="prof-name">Dr. Hernán Vargas</div>
+          <div class="prof-rol">Psiquiatra · 7 pacientes</div>
+        </div>
+        <div class="prof-carga">
+          <div class="carga-bar"><div class="carga-fill cf-ok" style="width:35%"></div></div>
+          <span class="carga-num">7/20</span>
+        </div>
+      </div>
+      <div style="padding:10px 16px;border-top:1px solid var(--border);background:var(--red-bg)">
+        <div style="font-size:12px;color:var(--red-d);display:flex;align-items:center;gap:6px">
+          <i class="ti ti-alert-circle" style="font-size:14px"></i>
+          <strong>4 pacientes nuevos</strong> sin profesional asignado — acción requerida
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: REPORTES + REUNIONES + ENTIDADES -->
+  <div class="row-3">
+
+    <!-- Reportes -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="ti ti-chart-bar"></i> Reportes</div>
+        <button class="btn btn-ghost btn-sm"><i class="ti ti-download"></i> Exportar</button>
+      </div>
+      <div class="rep-i">
+        <div class="rep-ico ri-g"><i class="ti ti-users"></i></div>
+        <div class="rep-info">
+          <div class="rep-title">Estado de pacientes — junio 2025</div>
+          <div class="rep-meta">48 pacientes · Generado hace 10 min</div>
+        </div>
+        <span class="rep-tag rt-ok">Listo</span>
+      </div>
+      <div class="rep-i">
+        <div class="rep-ico ri-b"><i class="ti ti-sos"></i></div>
+        <div class="rep-info">
+          <div class="rep-title">Alertas de emergencia — mes actual</div>
+          <div class="rep-meta">12 eventos · Incluye botones de pánico</div>
+        </div>
+        <span class="rep-tag rt-ok">Listo</span>
+      </div>
+      <div class="rep-i">
+        <div class="rep-ico ri-a"><i class="ti ti-clipboard-list"></i></div>
+        <div class="rep-info">
+          <div class="rep-title">Gestión de tratamientos — Q2</div>
+          <div class="rep-meta">Modificaciones, suspensiones y cierres</div>
+        </div>
+        <span class="rep-tag rt-pend">Generando</span>
+      </div>
+      <div class="rep-i">
+        <div class="rep-ico ri-p"><i class="ti ti-building-hospital"></i></div>
+        <div class="rep-info">
+          <div class="rep-title">Uso de servicios por entidad</div>
+          <div class="rep-meta">EPS Sanitas · Clínica San José · otros</div>
+        </div>
+        <span class="rep-tag rt-ok">Listo</span>
+      </div>
+    </div>
+
+    <!-- Reuniones -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="ti ti-users-group"></i> Reuniones próximas</div>
+        <button class="btn btn-primary btn-sm"><i class="ti ti-plus"></i> Crear</button>
+      </div>
+      <div class="reun-i">
+        <div class="reun-fecha"><div class="rf-d">25</div><div class="rf-m">jun</div></div>
+        <div class="reun-info">
+          <div class="reun-name">Grupo de apoyo — Jueves</div>
+          <div class="reun-meta">6:00 PM · Centro de Salud Norte</div>
+        </div>
+        <span class="reun-ins">12 / 15</span>
+      </div>
+      <div class="reun-i">
+        <div class="reun-fecha" style="background:var(--blue-bg)"><div class="rf-d" style="color:var(--blue-d)">28</div><div class="rf-m" style="color:var(--blue-mid)">jun</div></div>
+        <div class="reun-info">
+          <div class="reun-name">Sesión grupal — Online</div>
+          <div class="reun-meta">4:00 PM · Google Meet</div>
+        </div>
+        <span class="reun-ins">8 / 20</span>
+      </div>
+      <div class="reun-i">
+        <div class="reun-fecha"><div class="rf-d">02</div><div class="rf-m">jul</div></div>
+        <div class="reun-info">
+          <div class="reun-name">Encuentro familiar mensual</div>
+          <div class="reun-meta">3:00 PM · Sala B · Presencial</div>
+        </div>
+        <span class="reun-ins">18 / 25</span>
+      </div>
+      <div class="reun-i">
+        <div class="reun-fecha" style="background:var(--purple-bg)"><div class="rf-d" style="color:var(--purple)">05</div><div class="rf-m" style="color:var(--purple-mid)">jul</div></div>
+        <div class="reun-info">
+          <div class="reun-name">Revisión médica grupal</div>
+          <div class="reun-meta">9:00 AM · Clínica San José</div>
+        </div>
+        <span class="reun-ins">6 / 10</span>
+      </div>
+    </div>
+
+    <!-- Entidades de salud -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="ti ti-building-hospital"></i> Entidades de salud</div>
+        <button class="card-link">Gestionar</button>
+      </div>
+      <div class="ent-i">
+        <div class="ent-logo">🏥</div>
+        <div class="ent-info"><div class="ent-name">EPS Sanitas</div><div class="ent-tipo">EPS · Convenio activo — vence 15 jul</div></div>
+        <div class="ent-users">31 pacientes</div>
+      </div>
+      <div class="ent-i">
+        <div class="ent-logo">🧠</div>
+        <div class="ent-info"><div class="ent-name">Clínica San José</div><div class="ent-tipo">IPS · Psiquiatría y adicciones</div></div>
+        <div class="ent-users">24 pacientes</div>
+      </div>
+      <div class="ent-i">
+        <div class="ent-logo">📋</div>
+        <div class="ent-info"><div class="ent-name">Sec. Salud Distrital</div><div class="ent-tipo">Pública · Programa reducción daños</div></div>
+        <div class="ent-users">18 pacientes</div>
+      </div>
+      <div class="ent-i">
+        <div class="ent-logo">💊</div>
+        <div class="ent-info"><div class="ent-name">Farmacias Aliadas</div><div class="ent-tipo">Proveedor · Medicamentos</div></div>
+        <div class="ent-users">12 pacientes</div>
+      </div>
+      <div class="ent-i" style="border-bottom:none">
+        <div class="ent-logo" style="border-style:dashed;color:var(--slate-l)">+</div>
+        <div class="ent-info"><div class="ent-name" style="color:var(--brand);cursor:pointer">Vincular entidad</div><div class="ent-tipo">Agregar nueva entidad de salud</div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

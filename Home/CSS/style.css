@@ -69,7 +69,11 @@ body{
     color: rgb(255, 255, 255);
     border: none;
 
+<<<<<<< HEAD
+    padding: 14px 30px;
+=======
     padding: 3px 20px;
+>>>>>>> 2e18dde8d3b0b798fcc2b601457a3f81ecea9813
 
     border-radius: 15px;
 
@@ -93,14 +97,23 @@ body{
 .panico-boton button{
      background: linear-gradient(
         135deg,
+<<<<<<< HEAD
+        #e23409,
+        #f70000
+=======
         #c23131,
         #e40b0b
+>>>>>>> 2e18dde8d3b0b798fcc2b601457a3f81ecea9813
     );
 
     color: rgb(255, 255, 255);
     border: none;
 
+<<<<<<< HEAD
+    padding: 14px 30px;
+=======
     padding: 3px 20px;
+>>>>>>> 2e18dde8d3b0b798fcc2b601457a3f81ecea9813
 
     border-radius: 15px;
 

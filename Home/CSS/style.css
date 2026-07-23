@@ -98,12 +98,10 @@ body{
      background: linear-gradient(
         135deg,
 
-        #e23409,
+        #cc3232,
         #f70000
 
-        #c23131,
-        #e40b0b
-
+        
     );
 
     color: rgb(255, 255, 255);

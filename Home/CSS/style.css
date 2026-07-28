@@ -34,7 +34,7 @@ body{
 .logo h1{
     font-family: 'Lobster Two', cursive;
 
-    color: #0d6efd;
+    color: #1e40af;
 
     font-size: 42px;
 
@@ -58,38 +58,52 @@ body{
     color: #0d6efd;
 
 }
-.login-btn button{
-    
-    background: linear-gradient(
-        135deg,
-        #0d6efd,
-        #4f9cff
-    );
-
-    color: rgb(255, 255, 255);
-    border: none;
-
-    padding: 14px 30px;
-
-    border-radius: 15px;
-
-    font-size: 16px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow:
-    0 8px 20px rgba(13,110,253,0.25);
-
-    transition: all 0.3s ease;
+.header-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: white;
 }
 
-.login-btn button:hover{
-    transform: translateY(-3px);
 
-    box-shadow:
-    0 12px 25px rgba(8, 197, 255, 0.35);
+.acciones-header {
+  display: flex;
+  gap: 15px; 
 }
+
+/* Botón de Pánico */
+.boton-panico {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton-panico:hover {
+  transform: scale(1.05);
+}
+
+/* Botón de Inicio de Sesión */
+.boton-login {
+  background-color: #1e40af;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton-login:hover {
+  transform: scale(1.05);
+}
+
 
 /* H */
 

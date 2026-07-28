@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previnox - Login Administrador</title>
+  <!-- Conexión al CSS externo -->
+  <link rel="stylesheet" href="CSS/login-admin.css">
+</head>
+<body>
+
+  <article class="card">
+    <h1>Acceso Administrador</h1>
+    <p>Panel de Control y Gestión General</p>
+
+    <form onsubmit="ingresar(event)">
+      <label>Correo de Administrador
+        <input type="email" placeholder="admin@previnox.com" required>
+      </label>
+      <label>Contraseña
+        <input type="password" placeholder="••••" required>
+      </label>
+      <button type="submit" class="btn-submit">Iniciar Sesión</button>
+    </form>
+
+    <button class="btn-back" onclick="window.location.href='index.html'">← Volver a selección de rol</button>
+  </article>
+
+  <script>
+    function ingresar(e) {
+      e.preventDefault();
+      alert('¡Acceso concedido como Administrador!');
+      window.location.href = 'dashboard-admin.html';
+    }
+  </script>
+</body>
+</html>

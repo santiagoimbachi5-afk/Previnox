@@ -2,28 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Previnox</title>
   <link rel="stylesheet" href="CSS/inicio-sesion.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previnox - Seleccionar Rol</title>
+  <!-- Conexión al CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="login-container">
-    <h2>Iniciar sesión</h2>
-    <form id="loginForm">
-      <label for="username">Usuario</label>
-      <input type="text" id="username" placeholder="Ingresa tu usuario" required>
+  <img src="Img/Fondo_InSe.png" alt="Fondo_InSe">
 
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+  <article class="card">
+    <h1>Previnox</h1>
+    <p>¿Qué eres? Selecciona tu rol de ingreso:</p>
 
-      <button type="submit">Entrar</button>
-      <p class="register-text">¿No tienes cuenta?
-        <a href="registro.html">Regístrate</a>
-      </p>
+    <section class="roles">
+      <a class="btn-role admin" href="login-admin.html">Administrador</a>
+      <a class="btn-role salud" href="login-profesional.html">Profesional de Salud</a>
+      <a class="btn-role paciente" href="login-usuario.html">Usuario (Paciente)</a>
+    </section>
+  </article>
 
-    
-    </form>
-  </div>
-  <script src="login.js"></script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previnox - Login Administrador</title>
+    <style>
+        :root { --bg: #f1f5f9; --card: #fff; --text: #1e293b; --muted: #64748b; --primary: #9333ea; }
+        body { font-family: Arial, sans-serif; margin: 0; background: var(--bg); color: var(--text); display: flex; justify-content: center; align-items: center; height: 100vh; box-sizing: border-box; }
+
+        article.card { background: var(--card); width: 100%; max-width: 380px; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 20px; box-sizing: border-box; }
+        
+        h1 { text-align: center; color: var(--primary); margin: 0; font-size: 1.6rem; }
+        p { text-align: center; font-size: 0.85rem; color: var(--muted); margin: -10px 0 0 0; }
+
+        form { display: flex; flex-direction: column; gap: 12px; }
+        label { font-size: 0.8rem; font-weight: bold; color: var(--muted); display: flex; flex-direction: column; gap: 5px; }
+        input { padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; outline: none; box-sizing: border-box; width: 100%; }
+        
+        .btn-submit { background: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9rem; margin-top: 5px; }
+        .btn-submit:hover { opacity: 0.9; }
+        
+        .btn-back { background: none; border: none; color: var(--muted); font-size: 0.8rem; cursor: pointer; text-align: center; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <article class="card">
+        <h1>Acceso Administrador</h1>
+        <p>Panel de Control y Gestión General</p>
+
+        <form onsubmit="ingresar(event)">
+            <label>Correo de Administrador
+                <input type="email" placeholder="admin@previnox.com" required>
+            </label>
+            <label>Contraseña
+                <input type="password" placeholder="••••" required>
+            </label>
+            <button type="submit" class="btn-submit">Iniciar Sesión</button>
+        </form>
+
+        <button class="btn-back" onclick="window.location.href='index.html'">← Volver a selección de rol</button>
+    </article>
+
+    <script>
+        function ingresar(e) {
+            e.preventDefault();
+            alert('¡Acceso concedido como Administrador!');
+            window.location.href = 'dashboard-admin.html';   }
+    </script>
+</body>
+</html>

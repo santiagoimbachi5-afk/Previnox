@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previnox - Admin</title>
+    <style>
+        :root { --blue: #2563eb; --bg: #f1f5f9; --card: #fff; --text: #1e293b; --muted: #64748b; }
+        body { font-family: Arial, sans-serif; margin: 0; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; box-sizing: border-box; }
+        aside { width: 260px; background: var(--blue); color: #fff; padding: 25px 15px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        aside h1 { font-size: 1.4rem; margin: 0; }
+        aside p { font-size: 0.8rem; color: #dbeafe; margin: -15px 0 10px 0; }
+        nav { display: flex; flex-direction: column; gap: 8px; }
+        nav button { background: none; border: none; color: #fff; text-align: left; padding: 10px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; width: 100%; transition: background 0.2s; }
+        nav button:hover, nav button.active { background: rgba(255,255,255,0.2); font-weight: bold; }
+        
+        main { flex: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; box-sizing: border-box; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #cbd5e1; padding-bottom: 12px; }
+        header h2 { margin: 0; font-size: 1.5rem; }
+        header p { margin: 2px 0 0 0; font-size: 0.8rem; color: var(--muted); }
+        .logout { background: #334155; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+        section.dinamic-section { display: none; flex-direction: column; gap: 15px; }
+        section.dinamic-section.active { display: flex; }
+
+        .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        article.metric { background: var(--card); padding: 12px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-top: 4px solid var(--blue); }
+        article.metric h3 { margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; }
+        article.metric p { margin: 6px 0 0 0; font-size: 1.3rem; font-weight: bold; color: var(--blue); }
+
+        .grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 15px; }
+        article.panel { background: var(--card); padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        article.panel h3 { margin-top: 0; font-size: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+
+        ul.list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        ul.list li { display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: #f8fafc; border-radius: 6px; font-size: 0.85rem; font-weight: bold; }
+        
+        .btn-action { background: var(--blue); color: #fff; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        .chart { display: flex; align-items: flex-end; justify-content: space-around; height: 110px; border-bottom: 2px solid #cbd5e1; margin-top: 10px; }
+        .bar { width: 16px; background: var(--blue); border-radius: 3px 3px 0 0; }
+
+        .config-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .config-btn { background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 6px; cursor: pointer; text-align: center; font-size: 0.8rem; font-weight: bold; }
+        .config-btn:hover { background: #e2e8f0; }
+
+        footer { text-align: center; font-size: 0.75rem; color: var(--muted); border-top: 1px solid #cbd5e1; padding-top: 10px; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <h1>Previnox Admin</h1>
+        <p>Panel de Gestión</p>
+        <nav>
+            <button class="active" onclick="ir('inicio', this)">Inicio / Dashboard</button>
+            <button onclick="ir('usuarios', this)">Gestionar usuarios</button>
+            <button onclick="ir('reportes', this)">Ver reportes</button>
+            <button onclick="ir('publicaciones', this)">Crear publicaciones</button>
+            <button onclick="ir('alertas', this)">Monitorear alertas y SOS</button>
+            <button onclick="ir('profesionales', this)">Asignar profesionales</button>
+        </nav>
+    </aside>
+
+    <main>
+        <header>
+            <hgroup>
+                <h2 id="titulo">Panel de Administración</h2>
+                <p>Bienvenido, Administrador</p>
+            </hgroup>
+            <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
+        </header>
+
+        <!-- INICIO -->
+        <section id="inicio" class="dinamic-section active">
+            <section class="metrics">
+                <article class="metric"><h3>Usuarios</h3><p>1,250</p></article>
+                <article class="metric" style="border-top-color:#0d9488"><h3>Activos</h3><p style="color:#0d9488">320</p></article>
+                <article class="metric" style="border-top-color:#dc2626"><h3>Alertas</h3><p style="color:#dc2626">18</p></article>
+                <article class="metric" style="border-top-color:#9333ea"><h3>Reportes</h3><p style="color:#9333ea">45</p></article>
+            </section>
+            
+            <section class="grid-2">
+                <article class="panel">
+                    <h3>Estadísticas de Uso</h3>
+                    <figure class="chart">
+                        <span class="bar" style="height:40%"></span><span class="bar" style="height:70%"></span>
+                        <span class="bar" style="height:85%"></span><span class="bar" style="height:60%"></span>
+                        <span class="bar" style="height:30%"></span><span class="bar" style="height:55%"></span>
+                        <span class="bar" style="height:75%"></span><span class="bar" style="height:95%"></span>
+                    </figure>
+                </article>
+                <article class="panel">
+                    <h3>Gestión de Usuarios</h3>
+                    <ul class="list">
+                        <li><span>Carlos Perez</span> <button class="btn-action" onclick="alert('Editando a Carlos')">Editar</button></li>
+                        <li><span>Jean Gomez</span> <button class="btn-action" onclick="alert('Editando a Jean')">Editar</button></li>
+                        <li><span>Elis Mántes</span> <button class="btn-action" onclick="alert('Editando a Elis')">Editar</button></li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="grid-2">
+                <article class="panel">
+                    <h3>Tasa de Retención</h3>
+                    <figure style="display:flex;align-items:center;justify-content:center;height:90px;gap:15px;margin:0;">
+                        <span style="width:65px;height:65px;border-radius:50%;border:8px solid #2563eb;border-top-color:#0d9488;border-right-color:#9333ea;display:inline-block;"></span>
+                        <figcaption style="font-size:0.8rem;color:var(--muted);"><p><strong>Activos:</strong> 75%</p><p><strong>Inactivos:</strong> 25%</p></figcaption>
+                    </figure>
+                </article>
+                <article class="panel">
+                    <h3>Configuración</h3>
+                    <section class="config-grid">
+                        <button class="config-btn" onclick="alert('Ajustes')"> Ajustes</button>
+                        <button class="config-btn" onclick="alert('Editor')"> Editor</button>
+                        <button class="config-btn" onclick="alert('Accesos')"> Accesos</button>
+                        <button class="config-btn" onclick="alert('Parámetros')">🔧 Parámetros</button>
+                        <button class="config-btn" onclick="alert('Roles')"> Roles</button>
+                        <button class="config-btn" onclick="ir('reportes', document.querySelectorAll('nav button')[2])">📊 Reportes</button>
+                    </section>
+                </article>
+            </section>
+        </section>
+
+        <!-- GESTIONAR USUARIOS -->
+        <section id="usuarios" class="dinamic-section">
+            <article class="panel">
+                <h3>Módulo de Gestión de Usuarios</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li><span>Carlos Perez (Paciente)</span> <button class="btn-action" onclick="alert('Modificando')">Modificar</button></li>
+                    <li><span>Jean Gomez (Salud)</span> <button class="btn-action" onclick="alert('Modificando')">Modificar</button></li>
+                    <li><span>Elis Mántes (Admin)</span> <button class="btn-action" onclick="alert('Modificando')">Modificar</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- VER REPORTES -->
+        <section id="reportes" class="dinamic-section">
+            <article class="panel">
+                <h3>Reportes y Estadísticas Globales</h3>
+                <section style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+                    <button class="config-btn" style="text-align:left;" onclick="alert('Descargando Reporte de Actividad...')">📥 Descargar Reporte de Actividad (PDF)</button>
+                    <button class="config-btn" style="text-align:left;" onclick="alert('Descargando Alertas SOS...')">📥 Descargar Historial SOS (Excel)</button>
+                    <button class="config-btn" style="text-align:left;" onclick="alert('Cargando Métricas...')">📊 Ver Métricas de Retención Avanzadas</button>
+                </section>
+            </article>
+        </section>
+
+        <!-- CREAR PUBLICACIONES -->
+        <section id="publicaciones" class="dinamic-section">
+            <article class="panel">
+                <h3>Crear Publicaciones</h3>
+                <section style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+                    <input type="text" placeholder="Título" style="padding:8px;border:1px solid #cbd5e1;border-radius:4px;">
+                    <textarea placeholder="Contenido..." rows="3" style="padding:8px;border:1px solid #cbd5e1;border-radius:4px;font-family:Arial;"></textarea>
+                    <button class="btn-action" style="padding:8px;" onclick="alert('¡Publicado!')">Publicar</button>
+                </section>
+            </article>
+        </section>
+
+        <!-- MONITOREAR ALERTAS -->
+        <section id="alertas" class="dinamic-section">
+            <article class="panel" style="border-top:4px solid #dc2626;">
+                <h3 style="color:#dc2626">Monitoreo de Alertas y SOS</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li><span style="color:#dc2626"> SOS - Luis Martinez</span> <button class="btn-action" style="background:#dc2626;" onclick="alert('Atendiendo')">Atender</button></li>
+                    <li><span style="color:#dc2626"> Inactividad - Sofia Ruiz</span> <button class="btn-action" style="background:#dc2626;" onclick="alert('Revisando')">Revisar</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- ASIGNAR PROFESIONALES -->
+        <section id="profesionales" class="dinamic-section">
+            <article class="panel">
+                <h3>Asignación de Profesionales</h3>
+                <section style="display:flex;flex-direction:column;gap:8px;margin-top:10px;font-size:0.85rem;">
+                    <label>Paciente:</label>
+                    <select style="padding:6px;border:1px solid #cbd5e1;border-radius:4px;"><option>María</option><option>Carlos Perez</option></select>
+                    <label>Profesional:</label>
+                    <select style="padding:6px;border:1px solid #cbd5e1;border-radius:4px;"><option>Dr. Jean Gomez</option><option>Dra. Elis Mántes</option></select>
+                    <button class="btn-action" style="padding:8px;margin-top:5px;" onclick="alert('Asignado')">Guardar</button>
+                </section>
+            </article>
+        </section>
+
+        <footer><p>Previnox  2026</p></footer>
+    </main>
+
+    <script>
+        function ir(id, btn) {
+            document.querySelectorAll('.dinamic-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if(btn) btn.classList.add('active');
+            const titulos = {inicio:'Panel de Administración', usuarios:'Gestión de Usuarios', reportes:'Reportes y Estadísticas', publicaciones:'Creación de Publicaciones', alertas:'Monitoreo de Alertas y SOS', profesionales:'Asignación de Profesionales'};
+            document.getElementById('titulo').innerText = titulos[id];
+        }
+    </script>
+</body>
+</html>

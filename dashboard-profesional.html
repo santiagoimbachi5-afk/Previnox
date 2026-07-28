@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previnox - Profesional de Salud</title>
+    <style>
+        :root { --green: #4f9cff; --accent-green: #4f9cff; --orange: #d97706; --red: #dc2626; --bg: #f1f5f9; --card: #fff; --text: #1e293b; --muted: #64748b; --blue: #2563eb; }
+        body { font-family: Arial, sans-serif; margin: 0; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; box-sizing: border-box; }
+        aside { width: 260px; background: var(--green); color: #fff; padding: 25px 15px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        aside h1 { font-size: 1.4rem; margin: 0; }
+        aside p { font-size: 0.8rem; color: #829bff; margin: -15px 0 10px 0; }
+        nav { display: flex; flex-direction: column; gap: 8px; }
+        nav button { background: none; border: none; color: #fff; text-align: left; padding: 10px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; width: 100%; transition: background 0.2s; }
+        nav button:hover, nav button.active { background: rgba(255,255,255,0.2); font-weight: bold; }
+        
+        main { flex: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; box-sizing: border-box; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #cbd5e1; padding-bottom: 12px; }
+        header h2 { margin: 0; font-size: 1.5rem; }
+        header p { margin: 2px 0 0 0; font-size: 0.8rem; color: var(--muted); }
+        .logout { background: #334155; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+        section.dinamic-section { display: none; flex-direction: column; gap: 15px; }
+        section.dinamic-section.active { display: flex; }
+
+        .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        article.metric { background: var(--card); padding: 12px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-green); }
+        article.metric h3 { margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; }
+        article.metric p { margin: 6px 0 0 0; font-size: 1.3rem; font-weight: bold; color: var(--accent-green); }
+
+        .grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 15px; }
+        article.panel { background: var(--card); padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        article.panel h3 { margin-top: 0; font-size: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+
+        ul.list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        ul.list li { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; background: #f8fafc; border-radius: 6px; font-size: 0.85rem; font-weight: bold; }
+        
+        .btn-action { background: var(--accent-green); color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        .btn-action:hover { opacity: 0.9; }
+
+        footer { text-align: center; font-size: 0.75rem; color: var(--muted); border-top: 1px solid #cbd5e1; padding-top: 10px; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <h1>Previnox</h1>
+        <p>Panel Profesional de Salud</p>
+        <nav>
+            <button class="active" onclick="ir('resumen', this)">Resumen General</button>
+            <button onclick="ir('pacientes', this)">Lista de Pacientes</button>
+            <button onclick="ir('agenda', this)">Agenda de Hoy</button>
+            <button onclick="ir('notas', this)">Notas y Seguimientos</button>
+            <button onclick="ir('tareas', this)">Tareas Pendientes</button>
+        </nav>
+    </aside>
+
+    <main>
+        <header>
+            <hgroup>
+                <h2 id="titulo">Panel del Profesional de Salud</h2>
+                <p>Gestión clínica y seguimiento de pacientes</p>
+            </hgroup>
+            <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
+        </header>
+
+        <!-- RESUMEN GENERAL -->
+        <section id="resumen" class="dinamic-section active">
+            <section class="metrics">
+                <article class="metric"><h3>Pacientes Asignados</h3><p>15</p></article>
+                <article class="metric" style="border-top-color:var(--orange)"><h3>Citas de Hoy</h3><p style="color:var(--orange)">4</p></article>
+                <article class="metric" style="border-top-color:var(--red)"><h3>Alertas</h3><p style="color:var(--red)">3</p></article>
+            </section>
+            
+            <section class="grid-2">
+                <article class="panel">
+                    <h3>Pacientes Recientes</h3>
+                    <ul class="list" style="margin-top:10px;">
+                        <li><span> Luis Martinez</span> <button class="btn-action" onclick="alert('Viendo perfil de Luis')">Ver Perfil</button></li>
+                        <li><span> Elena Rodriguez</span> <button class="btn-action" onclick="alert('Viendo perfil de Elena')">Ver Perfil</button></li>
+                        <li><span> Pedro Sosa</span> <button class="btn-action" onclick="alert('Viendo perfil de Pedro')">Ver Perfil</button></li>
+                    </ul>
+                </article>
+                <article class="panel">
+                    <h3>Agenda Rápida</h3>
+                    <ul class="list" style="margin-top:10px;">
+                        <li><span> Consulta - 10:00 AM</span> <button class="btn-action" style="background:var(--orange)" onclick="alert('Atendiendo consulta')">Atender</button></li>
+                        <li><span> Seguimiento - 11:30 AM</span> <button class="btn-action" style="background:var(--blue)" onclick="alert('Revisando seguimiento')">Revisar</button></li>
+                    </ul>
+                </article>
+            </section>
+        </section>
+
+        <!-- LISTA DE PACIENTES -->
+        <section id="pacientes" class="dinamic-section">
+            <article class="panel">
+                <h3>Directorio Completo de Pacientes</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li><span> Luis Martinez — Plan Activo (70%)</span> <button class="btn-action" onclick="alert('Expediente de Luis Martinez')">Expediente</button></li>
+                    <li><span> Elena Rodriguez — Plan Activo (45%)</span> <button class="btn-action" onclick="alert('Expediente de Elena Rodriguez')">Expediente</button></li>
+                    <li><span> Pedro Sosa — Plan Inicial (20%)</span> <button class="btn-action" onclick="alert('Expediente de Pedro Sosa')">Expediente</button></li>
+                    <li><span> María Gomez — Plan Avanzado (90%)</span> <button class="btn-action" onclick="alert('Expediente de María Gomez')">Expediente</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- AGENDA DE HOY -->
+        <section id="agenda" class="dinamic-section">
+            <article class="panel">
+                <h3>Agenda de Citas y Consultas</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li><span>10:00 AM — Consulta General (Luis Martinez)</span> <button class="btn-action" onclick="alert('Iniciando consulta')">Iniciar</button></li>
+                    <li><span>11:30 AM — Seguimiento Terapéutico (Elena Rodriguez)</span> <button class="btn-action" onclick="alert('Iniciando seguimiento')">Iniciar</button></li>
+                    <li><span>02:00 PM — Evaluación de Progreso (Pedro Sosa)</span> <button class="btn-action" onclick="alert('Iniciando evaluación')">Iniciar</button></li>
+                    <li><span>04:00 PM — Primera Cita (Nuevo Paciente)</span> <button class="btn-action" onclick="alert('Iniciando cita')">Iniciar</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- NOTAS Y SEGUIMIENTOS -->
+        <section id="notas" class="dinamic-section">
+            <article class="panel">
+                <h3>Historial de Notas Clínicas</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li><span> Sesión de terapia (Luis Martinez) — 5 Abr</span> <button class="btn-action" onclick="alert('Leyendo nota clínica')">Leer</button></li>
+                    <li><span> Evaluación de progreso (Elena Rodriguez) — 15 Abr</span> <button class="btn-action" onclick="alert('Leyendo evaluación')">Leer</button></li>
+                    <li><span> Ajuste de medicación/rutina (Pedro Sosa) — 20 Abr</span> <button class="btn-action" onclick="alert('Leyendo nota clínica')">Leer</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- TAREAS PENDIENTES -->
+        <section id="tareas" class="dinamic-section">
+            <article class="panel">
+                <h3>Lista de Tareas y Pendientes</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li><span> Revisar reportes clínicos semanales</span> <button class="btn-action" style="background:var(--blue)" onclick="alert('Marcado como completado')">Completar</button></li>
+                    <li><span> Actualizar historial médico de pacientes</span> <button class="btn-action" style="background:var(--blue)" onclick="alert('Abriendo historial...')">Actualizar</button></li>
+                    <li><span> Validar alertas de pacientes en riesgo</span> <button class="btn-action" style="background:var(--red)" onclick="alert('Revisando alertas...')">Revisar</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <footer><p>Previnox Sistema Clínico &copy; 2026</p></footer>
+    </main>
+
+    <script>
+        function ir(id, btn) {
+            document.querySelectorAll('.dinamic-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if(btn) btn.classList.add('active');
+            const titulos = {
+                'resumen': 'Panel del Profesional de Salud',
+                'pacientes': 'Lista de Pacientes',
+                'agenda': 'Agenda de Hoy',
+                'notas': 'Notas y Seguimientos',
+                'tareas': 'Tareas Pendientes'
+            };
+            document.getElementById('titulo').innerText = titulos[id];
+        }
+    </script>
+</body>
+</html>

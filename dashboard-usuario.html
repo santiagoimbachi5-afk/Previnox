@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previnox - Paciente</title>
+    <style>
+        :root { --green: #4f9cff; --bg: #f1f5f9; --card: #fff; --text: #1e293b; --muted: #64748b; --blue: #2563eb; }
+        body { font-family: Arial, sans-serif; margin: 0; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; box-sizing: border-box; }
+        aside { width: 260px; background: var(--green); color: #fff; padding: 25px 15px; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+        aside h1 { font-size: 1.4rem; margin: 0; }
+        aside p { font-size: 0.8rem; color: #d1fae5; margin: -15px 0 10px 0; }
+        nav { display: flex; flex-direction: column; gap: 8px; }
+        nav button { background: none; border: none; color: #fff; text-align: left; padding: 10px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; width: 100%; transition: background 0.2s; }
+        nav button:hover, nav button.active { background: rgba(255,255,255,0.2); font-weight: bold; }
+        
+        main { flex: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; box-sizing: border-box; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #cbd5e1; padding-bottom: 12px; }
+        header h2 { margin: 0; font-size: 1.5rem; }
+        header p { margin: 2px 0 0 0; font-size: 0.8rem; color: var(--muted); }
+        .logout { background: #334155; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+        section.dinamic-section { display: none; flex-direction: column; gap: 15px; }
+        section.dinamic-section.active { display: flex; }
+
+        .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        article.metric { background: var(--card); padding: 12px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-top: 4px solid var(--green); }
+        article.metric h3 { margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; }
+        article.metric p { margin: 6px 0 0 0; font-size: 1.3rem; font-weight: bold; color: var(--green); }
+
+        .grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 15px; }
+        article.panel { background: var(--card); padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        article.panel h3 { margin-top: 0; font-size: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+
+        ul.list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        ul.list li { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; background: #f8fafc; border-radius: 6px; font-size: 0.85rem; font-weight: bold; }
+        
+        .btn-action { background: var(--green); color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        .config-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .config-btn { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 10px; border-radius: 6px; cursor: pointer; text-align: center; font-size: 0.8rem; font-weight: bold; }
+        .config-btn:hover { background: #e2e8f0; }
+
+        footer { text-align: center; font-size: 0.75rem; color: var(--muted); border-top: 1px solid #cbd5e1; padding-top: 10px; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <h1>Previnox</h1>
+        <p>Panel del Paciente</p>
+        <nav>
+            <button class="active" onclick="ir('inicio', this)">Mi Inicio</button>
+            <button onclick="ir('citas', this)">Mis Citas</button>
+            <button onclick="ir('progreso', this)">Plan de Bienestar</button>
+            <button onclick="ir('recursos', this)">Recursos de Apoyo</button>
+            <button onclick="ir('chat', this)">Chat de Apoyo</button>
+        </nav>
+    </aside>
+
+    <main>
+        <header>
+            <hgroup>
+                <h2 id="titulo">Bienvenida, María</h2>
+                <p>Panel de Control del Paciente</p>
+            </hgroup>
+            <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
+        </header>
+
+        <!-- INICIO -->
+        <section id="inicio" class="dinamic-section active">
+            <section class="metrics">
+                <article class="metric"><h3>Progreso</h3><p>70%</p></article>
+                <article class="metric" style="border-top-color:var(--blue)"><h3>Próxima Cita</h3><p style="font-size:1rem; color:var(--blue)">24 Abr, 10 AM</p></article>
+                <article class="metric" style="border-top-color:#4f9cff"><h3>Sesiones</h3><p style="color:#4f9cff">8 Completas</p></article>
+            </section>
+            
+            <section class="grid-2">
+                <article class="panel">
+                    <h3>Tu Progreso Actual</h3>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:5px;">Plan de Bienestar en curso</p>
+                    <section style="background:#e2e8f0; height:12px; border-radius:6px; overflow:hidden; margin-top:15px;">
+                        <section style="background:var(--green); width:70%; height:100%;"></section>
+                    </section>
+                    <p style="font-size:0.8rem; font-weight:bold; text-align:right; margin-top:8px;">70% Complete</p>
+                </article>
+                <article class="panel">
+                    <h3>Próxima Cita</h3>
+                    <p style="font-size:0.9rem; font-weight:bold; margin-top:5px;"> Consulta con Psicólogo</p>
+                    <p style="font-size:0.8rem; color:var(--muted); margin:5px 0 15px 0;">24 de Abril, 10:00 AM</p>
+                    <button class="btn-action" onclick="alert('Abriendo detalles de la cita...')">Ver Detalles</button>
+                </article>
+            </section>
+
+            <article class="panel">
+                <h3>Recursos de Apoyo Rápidos</h3>
+                <section class="config-grid" style="margin-top:10px;">
+                    <button class="config-btn" onclick="ir('recursos', document.querySelectorAll('nav button')[3])"> Guías de Prevención</button>
+                    <button class="config-btn" onclick="alert('Abriendo ejercicios de relajación...')"> Ejercicios de Relajación</button>
+                    <button class="config-btn" onclick="ir('chat', document.querySelectorAll('nav button')[4])"> Chat de Apoyo</button>
+                </section>
+            </article>
+        </section>
+
+        <!-- MIS CITAS -->
+        <section id="citas" class="dinamic-section">
+            <article class="panel">
+                <h3>Historial y Próximas Citas</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li><span>Consulta con Psicólogo - 24 Abr, 10:00 AM</span> <button class="btn-action" onclick="alert('Detalles de la cita')">Ver</button></li>
+                    <li><span> Sesión de Terapia - 10 Abr (Completada)</span> <button class="btn-action" style="background:var(--muted)" onclick="alert('Ver resumen')">Resumen</button></li>
+                    <li><span> Evaluación Inicial - 1 Mar (Completada)</span> <button class="btn-action" style="background:var(--muted)" onclick="alert('Ver resumen')">Resumen</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- PLAN DE BIENESTAR -->
+        <section id="progreso" class="dinamic-section">
+            <article class="panel">
+                <h3>Detalles de tu Plan de Bienestar</h3>
+                <p style="font-size:0.85rem; color:var(--muted); line-height:1.4;">Tu plan actual se centra en el manejo del estrés y bienestar emocional general. Has completado 8 de 12 módulos establecidos por tu especialista.</p>
+                <section style="background:#e2e8f0; height:12px; border-radius:6px; overflow:hidden; margin:15px 0;">
+                    <section style="background:var(--green); width:70%; height:100%;"></section>
+                </section>
+                <button class="btn-action" onclick="alert('Cargando módulo actual...')">Continuar Módulo Actual</button>
+            </article>
+        </section>
+
+        <!-- RECURSOS DE APOYO -->
+        <section id="recursos" class="dinamic-section">
+            <article class="panel">
+                <h3>Biblioteca de Recursos</h3>
+                <section class="config-grid" style="margin-top:10px;">
+                    <button class="config-btn" onclick="alert('Descargando guía de manejo de ansiedad...')"> Guía de Ansiedad (PDF)</button>
+                    <button class="config-btn" onclick="alert('Reproduciendo audio relajante...')">Audio de Relajación</button>
+                    <button class="config-btn" onclick="alert('Abriendo tips de sueño...')">Tips para Dormir Mejor</button>
+                </section>
+            </article>
+        </section>
+
+        <!-- CHAT DE APOYO -->
+        <section id="chat" class="dinamic-section">
+            <article class="panel">
+                <h3>Chat con tu Especialista o Soporte</h3>
+                <section style="background:#f8fafc; border:1px solid #e2e8f0; height:150px; border-radius:6px; padding:10px; display:flex; flex-direction:column; justify-content:flex-end; gap:8px; margin-bottom:10px;">
+                    <p style="background:#e2e8f0; padding:6px 10px; border-radius:6px; font-size:0.8rem; margin:0; width:fit-content;">Hola María, ¿cómo te sientes hoy?</p>
+                    <p style="background:var(--green); color:#fff; padding:6px 10px; border-radius:6px; font-size:0.8rem; margin:0; width:fit-content; align-self:flex-end;">Hola, todo bien por aquí gracias.</p>
+                </section>
+                <section style="display:flex; gap:8px;">
+                    <input type="text" placeholder="Escribe un mensaje..." style="flex:1; padding:8px; border:1px solid #cbd5e1; border-radius:4px; font-size:0.85rem;">
+                    <button class="btn-action" onclick="alert('Mensaje enviado')">Enviar</button>
+                </section>
+            </article>
+        </section>
+
+        <footer><p>Previnox 2026</p></footer>
+    </main>
+
+    <script>
+        function ir(id, btn) {
+            document.querySelectorAll('.dinamic-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if(btn) btn.classList.add('active');
+            const titulos = {inicio:'Bienvenida, María', citas:'Mis Citas Médicas', progreso:'Plan de Bienestar', recursos:'Recursos de Apoyo', chat:'Chat de Apoyo'};
+            document.getElementById('titulo').innerText = titulos[id];
+        }
+    </script>
+</body>
+</html>

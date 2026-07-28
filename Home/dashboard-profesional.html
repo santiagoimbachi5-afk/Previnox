@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previnox - Profesional de Salud</title>
+  <link rel="stylesheet" href="CSS/dashboard-profesional.css">
+</head>
+<body>
+  <aside>
+    <h1>Previnox</h1>
+    <p>Panel Profesional de Salud</p>
+    <nav>
+      <button class="active" onclick="ir('resumen', this)">Resumen General</button>
+      <button onclick="ir('pacientes', this)">Lista de Pacientes</button>
+      <button onclick="ir('agenda', this)">Agenda de Hoy</button>
+      <button onclick="ir('notas', this)">Notas y Seguimientos</button>
+      <button onclick="ir('tareas', this)">Tareas Pendientes</button>
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <hgroup>
+        <h2 id="titulo">Panel del Profesional de Salud</h2>
+        <p>Gestión clínica y seguimiento de pacientes</p>
+      </hgroup>
+      <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
+    </header>
+
+    <!-- RESUMEN GENERAL -->
+    <section id="resumen" class="dinamic-section active">
+      <!-- contenido de métricas y agenda rápida -->
+    </section>
+
+    <!-- LISTA DE PACIENTES -->
+    <section id="pacientes" class="dinamic-section">
+      <!-- contenido de pacientes -->
+    </section>
+
+    <!-- AGENDA DE HOY -->
+    <section id="agenda" class="dinamic-section">
+      <!-- contenido de agenda -->
+    </section>
+
+    <!-- NOTAS Y SEGUIMIENTOS -->
+    <section id="notas" class="dinamic-section">
+      <!-- contenido de notas -->
+    </section>
+
+    <!-- TAREAS PENDIENTES -->
+    <section id="tareas" class="dinamic-section">
+      <article class="panel">
+        <h3>Lista de Tareas y Pendientes</h3>
+        <ul class="list">
+          <li><span>Revisar reportes clínicos semanales</span> <button class="btn-action" style="background:var(--blue)">Completar</button></li>
+          <li><span>Actualizar historial médico de pacientes</span> <button class="btn-action" style="background:var(--blue)">Actualizar</button></li>
+          <li><span>Validar alertas de pacientes en riesgo</span> <button class="btn-action" style="background:var(--red)">Revisar</button></li>
+        </ul>
+      </article>
+    </section>
+
+    <footer><p>Previnox Sistema Clínico &copy; 2026</p></footer>
+  </main>
+
+  <script>
+    function ir(id, btn) {
+      document.querySelectorAll('.dinamic-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      if(btn) btn.classList.add('active');
+      const titulos = {
+        'resumen': 'Panel del Profesional de Salud',
+        'pacientes': 'Lista de Pacientes',
+        'agenda': 'Agenda de Hoy',
+        'notas': 'Notas y Seguimientos',
+        'tareas': 'Tareas Pendientes'
+      };
+      document.getElementById('titulo').innerText = titulos[id];
+    }
+  </script>
+</body>
+</html>

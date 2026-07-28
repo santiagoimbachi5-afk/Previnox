@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previnox - Admin</title>
+  <link rel="stylesheet" href="CSS/dashboard-admin.css">
+</head>
+<body>
+  <aside>
+    <h1>Previnox Admin</h1>
+    <p>Panel de Gestión</p>
+    <nav>
+      <button class="active" onclick="ir('inicio', this)">Inicio / Dashboard</button>
+      <button onclick="ir('usuarios', this)">Gestionar usuarios</button>
+      <button onclick="ir('reportes', this)">Ver reportes</button>
+      <button onclick="ir('publicaciones', this)">Crear publicaciones</button>
+      <button onclick="ir('alertas', this)">Monitorear alertas y SOS</button>
+      <button onclick="ir('profesionales', this)">Asignar profesionales</button>
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <hgroup>
+        <h2 id="titulo">Panel de Administración</h2>
+        <p>Bienvenido, Administrador</p>
+      </hgroup>
+      <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
+    </header>
+
+    <!-- INICIO -->
+    <section id="inicio" class="dinamic-section active">
+      <!-- métricas, estadísticas, gestión de usuarios, configuración -->
+    </section>
+
+    <!-- GESTIONAR USUARIOS -->
+    <section id="usuarios" class="dinamic-section">
+      <!-- módulo de gestión de usuarios -->
+    </section>
+
+    <!-- VER REPORTES -->
+    <section id="reportes" class="dinamic-section">
+      <!-- reportes y estadísticas -->
+    </section>
+
+    <!-- CREAR PUBLICACIONES -->
+    <section id="publicaciones" class="dinamic-section">
+      <!-- creación de publicaciones -->
+    </section>
+
+    <!-- MONITOREAR ALERTAS -->
+    <section id="alertas" class="dinamic-section">
+      <!-- monitoreo de alertas -->
+    </section>
+
+    <!-- ASIGNAR PROFESIONALES -->
+    <section id="profesionales" class="dinamic-section">
+      <!-- asignación de profesionales -->
+    </section>
+
+    <footer><p>Previnox &copy; 2026</p></footer>
+  </main>
+
+  <script>
+    function ir(id, btn) {
+      document.querySelectorAll('.dinamic-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      if(btn) btn.classList.add('active');
+      const titulos = {
+        inicio:'Panel de Administración',
+        usuarios:'Gestión de Usuarios',
+        reportes:'Reportes y Estadísticas',
+        publicaciones:'Creación de Publicaciones',
+        alertas:'Monitoreo de Alertas y SOS',
+        profesionales:'Asignación de Profesionales'
+      };
+      document.getElementById('titulo').innerText = titulos[id];
+    }
+  </script>
+</body>
+</html>

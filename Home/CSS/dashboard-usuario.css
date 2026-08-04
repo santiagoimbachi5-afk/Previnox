@@ -1,7 +1,7 @@
 :root {
-  --green: #49fcff;
-  --bg: #1f1f59;
-  --card: #fff;
+  --green: #0452fa;
+  --bg: #c6c6da;
+  --card: #ffffff;
   --text: #1e293b;
   --muted: #64748b;
   --blue: #2563eb;
@@ -46,7 +46,7 @@ nav button {
   transition: background 0.2s;
 }
 nav button:hover, nav button.active {
-  background: rgba(255,255,255,0.2);
+  background: rgba(224, 221, 221, 0.2);
   font-weight: bold;
 }
 

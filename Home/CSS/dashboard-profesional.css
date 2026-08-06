@@ -1,5 +1,5 @@
 :root {
-  --green: #0d6efd;
+  --green: #149D52;
   --accent-green: #4f9cff;
   --orange: #d97706;
   --red: #dc2626;
@@ -32,7 +32,11 @@ aside {
   flex-shrink: 0;
 }
 
-aside h1 { font-size: 1.4rem; margin: 0; }
+aside h1 {
+  font-size: 1.8rem; margin: 0;
+  font-family: 'Lobster Two', cursive;
+
+}
 aside p { font-size: 0.8rem; color: #b0fc00; margin: -15px 0 10px 0; }
 
 nav { display: flex; flex-direction: column; gap: 8px; }

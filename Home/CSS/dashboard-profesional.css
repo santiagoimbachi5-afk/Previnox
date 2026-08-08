@@ -1,177 +1,331 @@
-:root {
-  --green: #149D52;
-  --accent-green: #4f9cff;
-  --orange: #d97706;
-  --red: #dc2626;
-  --bg: #f1f5f9;
-  --card: #fff;
-  --text: #1e293b;
-  --muted: #64748b;
-  --blue: #2563eb;
-}
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  overflow: hidden;
-  box-sizing: border-box;
 }
-
-aside {
-  width: 260px;
-  background: var(--green);
-  color: #fff;
-  padding: 25px 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex-shrink: 0;
-}
-
-aside h1 {
-  font-size: 1.8rem; margin: 0;
+aside h2{
   font-family: 'Lobster Two', cursive;
-
+  padding: 2px;
+  font-size: 40px;
+  margin-top: 5px;
 }
-aside p { font-size: 0.8rem; color: #b0fc00; margin: -15px 0 10px 0; }
-
-nav { display: flex; flex-direction: column; gap: 8px; }
-nav button {
-  background: none;
-  border: none;
-  color: #fff;
-  text-align: left;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  width: 100%;
-  transition: background 0.2s;
-}
-nav button:hover, nav button.active {
-  background: rgba(255,255,255,0.2);
-  font-weight: bold;
+aside p{
+  color: yellow;
+  font-size: 12px;
+  margin-top: -10px;
 }
 
-main {
+.container {
+  display: flex;
   flex: 1;
-  padding: 25px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  box-sizing: border-box;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #cbd5e1;
-  padding-bottom: 12px;
+.sidebar {
+  background-color: #059669;
+  color: white;
+  width: 250px;
+  padding: 20px;
 }
 
-header h2 { margin: 0; font-size: 1.5rem; }
-header p { margin: 2px 0 0 0; font-size: 0.8rem; color: var(--muted); }
-
-.logout {
-  background: #334155;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+.sidebar h2 {
+  margin-bottom: 5px;
 }
 
-section.dinamic-section { display: none; flex-direction: column; gap: 15px; }
-section.dinamic-section.active { display: flex; }
-
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-article.metric {
-  background: var(--card);
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  border-top: 4px solid var(--accent-green);
-}
-article.metric h3 {
-  margin: 0;
-  font-size: 0.75rem;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-article.metric p {
-  margin: 6px 0 0 0;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--accent-green);
-}
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 15px;
-}
-
-article.panel {
-  background: var(--card);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-article.panel h3 {
-  margin-top: 0;
-  font-size: 1rem;
-  border-bottom: 1px solid #f1f5f9;
-  padding-bottom: 8px;
-}
-
-ul.list {
+.sidebar ul {
   list-style: none;
   padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
-ul.list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 10px;
-  background: #f8fafc;
-  border-radius: 6px;
-  font-size: 0.85rem;
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar li:hover {
+  background-color: #9c9a9a;
+}
+
+.logout {
+  margin-top: 20px;
+  background-color: #102daf;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.contenido {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.seccion {
+  display: none;
+}
+
+.seccion.activa {
+  display: block;
+}
+/* */
+.card-paciente {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+.card-paciente p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.btn-entidades {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-entidades:hover {
+  background-color: #005bb5;
+}
+
+.entidades {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.oculto {
+  display: none;
+}
+.calendario {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.calendario input {
+  margin: 5px;
+  padding: 8px;
+}
+
+.calendario button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calendario button:hover {
+  background-color: #005bb5;
+}
+
+.btn-auto {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.btn-auto:hover {
+  background-color: #1e8449;
+}
+
+.lista-citas {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
+/* Atender emergencia*/
+.btn-emergencia {
+  background-color: #e74c3c; /* rojo destacado */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.btn-emergencia:hover {
+  background-color: #c0392b;
+}
+
+.alertas {
+  background: #fff3f3;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.alertas h4 {
+  color: #c0392b;
+}
+
+.alertas ul {
+  list-style: none;
+  padding: 0;
+}
+
+.alertas li {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 5px;
   font-weight: bold;
 }
 
-.btn-action {
-  background: var(--accent-green);
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.75rem;
+/* Colores según prioridad */
+.alertas li.alta {
+  background: #fdecea;
+  border-left: 6px solid #e74c3c;
 }
-.btn-action:hover { opacity: 0.9; }
+
+.alertas li.media {
+  background: #fff8e1;
+  border-left: 6px solid #f39c12;
+}
+
+.alertas li.baja {
+  background: #e8f5e9;
+  border-left: 6px solid #27ae60;
+}
+/*Panel de reportes */
+.panel-reportes {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabla-reportes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.tabla-reportes th, .tabla-reportes td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.tabla-reportes th {
+  background-color: #0a74da;
+  color: white;
+}
+
+.acciones-reportes button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.acciones-reportes button:hover {
+  background-color: #005bb5;
+}
+/* Solicitudes de Usuario*/
+.bandeja-solicitudes {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.bandeja-solicitudes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bandeja-solicitudes li {
+  margin: 8px 0;
+  padding: 10px;
+  background: #ffffff;
+  border-left: 5px solid #0a74da;
+  border-radius: 5px;
+}
+
+.acciones-solicitudes button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.acciones-solicitudes button:hover {
+  background-color: #005bb5;
+}
+/* Gestionar planes de tratamineto */ 
+.lista-planes {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.lista-planes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-planes li {
+  margin: 10px 0;
+  padding: 12px;
+  background: #ffffff;
+  border-left: 5px solid #0a74da;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.acciones-plan {
+  margin-top: 8px;
+}
+
+.acciones-plan button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.acciones-plan button:hover {
+  background-color: #005bb5;
+}
 
 footer {
   text-align: center;
-  font-size: 0.75rem;
-  color: var(--muted);
-  border-top: 1px solid #cbd5e1;
-  padding-top: 10px;
-  margin-top: auto;
+  background-color: #102daf;
+  color: white;
+  padding: 10px;
 }

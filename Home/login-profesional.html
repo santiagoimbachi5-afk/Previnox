@@ -26,6 +26,12 @@
     <button class="btn-back" onclick="window.location.href='index.html'">← Volver</button>
   </article>
 
-<script src="Js/login-profesional.js"></script>
+  <script>
+    function ingresar(e) {
+      e.preventDefault();
+      alert('¡Acceso concedido como Profesional de Salud!');
+      window.location.href = 'dashboard-profesional.html';
+    }
+  </script>
 </body>
 </html>

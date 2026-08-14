@@ -25,6 +25,11 @@ body {
   height: 100vh;
   box-sizing: border-box;
 }
+article h1{
+  font-family: 'Lobster Two', cursive;
+  padding: 10px;
+  font-size: 60px;
+}
 body img{
   position: fixed;  
   top: 0;

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previnox - Admin</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+
+    <aside>
+        <h1>Previnox Admin</h1>
+        <p>Panel de Gestión</p>
+        <nav>
+            <button class="active" onclick="ir('inicio', this)">Inicio / Dashboard</button>
+            <button onclick="ir('usuarios', this)">Gestionar Usuarios</button>
+            <button onclick="ir('reportes', this)">Generar Reportes</button>
+            <button onclick="ir('alertas', this)">M onitorizar Alertas</button>
+            <button onclick="ir('profesionales', this)">Asignar Profesionales</button>
+            <button onclick="ir('contenido', this)">Aprobar Contenido</button>
+            <button onclick="ir('campa\u00f1as', this)">Publicar Campañas</button>
+        </nav>
+    </aside>
+
+    <main>
+        <header>
+            <hgroup>
+                <h2 id="titulo">Panel de Administración</h2>
+                <p>Bienvenido, Administrador</p>
+            </hgroup>
+            <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
+        </header>
+
+        <!-- INICIO / DASHBOARD -->
+        <section id="inicio" class="dinamic-section active">
+            <section class="metrics">
+                <article class="metric"><h3>Usuarios</h3><p>1,250</p></article>
+                <article class="metric" style="border-top-color:#0d9488"><h3>Activos</h3><p style="color:#0d9488">320</p></article>
+                <article class="metric" style="border-top-color:#dc2626"><h3>Alertas</h3><p style="color:#dc2626">18</p></article>
+                <article class="metric" style="border-top-color:#9333ea"><h3>Reportes</h3><p style="color:#9333ea">45</p></article>
+            </section>
+            
+            <section class="grid-2">
+                <article class="panel">
+                    <h3>Estadísticas de Uso</h3>
+                    <figure class="chart">
+                        <span class="bar" style="height:40%"></span><span class="bar" style="height:70%"></span>
+                        <span class="bar" style="height:85%"></span><span class="bar" style="height:60%"></span>
+                        <span class="bar" style="height:30%"></span><span class="bar" style="height:55%"></span>
+                        <span class="bar" style="height:75%"></span><span class="bar" style="height:95%"></span>
+                    </figure>
+                </article>
+                <article class="panel">
+                    <h3>Gestión Rápida de Usuarios</h3>
+                    <ul class="list">
+                        <li><span>Carlos Perez</span> <button class="btn-action" onclick="alert('Editando a Carlos')">Editar</button></li>
+                        <li><span>Jean Gomez</span> <button class="btn-action" onclick="alert('Editando a Jean')">Editar</button></li>
+                        <li><span>Elis Mántes</span> <button class="btn-action" onclick="alert('Editando a Elis')">Editar</button></li>
+                    </ul>
+                </article>
+            </section>
+        </section>
+
+        <!-- GESTIONAR USUARIOS (RF-NU-001) -->
+        <section id="usuarios" class="dinamic-section">
+            <article class="panel">
+                <h3>Módulo de Gestión de Usuarios (RF-NU-001)</h3>
+                <form onsubmit="event.preventDefault(); alert('Usuario registrado con éxito');" style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                    <input type="text" placeholder="Nombre completo" required style="padding:8px; border:1px solid #cbd5e1; border-radius:4px;">
+                    <input type="email" placeholder="Correo electrónico" required style="padding:8px; border:1px solid #cbd5e1; border-radius:4px;">
+                    <input type="tel" placeholder="Número de teléfono" required style="padding:8px; border:1px solid #cbd5e1; border-radius:4px;">
+                    <input type="text" placeholder="Nombre de usuario" required style="padding:8px; border:1px solid #cbd5e1; border-radius:4px;">
+                    <input type="password" placeholder="Contraseña" required style="padding:8px; border:1px solid #cbd5e1; border-radius:4px;">
+                    <button type="submit" class="btn-action" style="padding:8px;">Registrar Usuario</button>
+                </form>
+                <h4 style="margin-top:20px; font-size:0.9rem;">Usuarios Registrados</h4>
+                <ul class="list" style="margin-top:5px;">
+                    <li><span>Carlos Perez (Paciente)</span> <button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
+                    <li><span>Jean Gomez (Salud)</span> <button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
+                    <li><span>Elis Mántes (Admin)</span> <button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- GENERAR REPORTES (RF-NU-002) -->
+        <section id="reportes" class="dinamic-section">
+            <article class="panel">
+                <h3>Generar Reportes y Estadísticas (RF-NU-002)</h3>
+                <section style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                    <label style="font-size:0.85rem; font-weight:bold;">Tipo de Reporte:</label>
+                    <select style="padding:8px; border:1px solid #cbd5e1; border-radius:4px;">
+                        <option>Reporte de Actividad General</option>
+                        <option>Historial de Alertas SOS</option>
+                        <option>Métricas de Retención</option>
+                    </select>
+                    <div style="display:flex; gap:10px;">
+                        <div style="flex:1;"><label style="font-size:0.75rem;">Desde:</label><input type="date" style="width:100%; padding:6px; border:1px solid #cbd5e1; border-radius:4px;"></div>
+                        <div style="flex:1;"><label style="font-size:0.75rem;">Hasta:</label><input type="date" style="width:100%; padding:6px; border:1px solid #cbd5e1; border-radius:4px;"></div>
+                    </div>
+                    <button class="config-btn" style="text-align:left; background:var(--blue); color:#fff;" onclick="alert('Reporte generado correctamente con los filtros seleccionados.')">📥 Generar y Descargar Reporte</button>
+                </section>
+            </article>
+        </section>
+
+        <!-- MONITORIZAR ALERTAS (RF-UN-003) -->
+        <section id="alertas" class="dinamic-section">
+            <article class="panel" style="border-top:4px solid #dc2626;">
+                <h3 style="color:#dc2626">Monitorizar Alertas y SOS (RF-UN-003)</h3>
+                <ul class="list" style="margin-top:10px;">
+                    <li>
+                        <span style="color:#dc2626">SOS - Luis Martinez (Impacto Alto)</span> 
+                        <select onchange="alert('Estado actualizado a: ' + this.value)" style="padding:4px; font-size:0.75rem;">
+                            <option>Pendiente</option>
+                            <option selected>En revisión</option>
+                            <option>Atendida</option>
+                            <option>Descartada</option>
+                            <option>Escalada</option>
+                        </select>
+                    </li>
+                    <li>
+                        <span style="color:#dc2626">Inactividad - Sofia Ruiz (Impacto Medio)</span> 
+                        <select onchange="alert('Estado actualizado a: ' + this.value)" style="padding:4px; font-size:0.75rem;">
+                            <option selected>Pendiente</option>
+                            <option>En revisión</option>
+                            <option>Atendida</option>
+                            <option>Descartada</option>
+                            <option>Escalada</option>
+                        </select>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- ASIGNAR PROFESIONALES (RF-NU-004) -->
+        <section id="profesionales" class="dinamic-section">
+            <article class="panel">
+                <h3>Asignación de Profesionales (RF-NU-004)</h3>
+                <section style="display:flex; flex-direction:column; gap:8px; margin-top:10px; font-size:0.85rem;">
+                    <label>Caso / Usuario a Asignar:</label>
+                    <select style="padding:6px; border:1px solid #cbd5e1; border-radius:4px;"><option>Caso #102 - María (Urgente)</option><option>Caso #105 - Carlos Perez</option></select>
+                    
+                    <label>Seleccionar Profesional (según disponibilidad y especialidad):</label>
+                    <select style="padding:6px; border:1px solid #cbd5e1; border-radius:4px;">
+                        <option>Dr. Jean Gomez - Psicología (Disponible)</option>
+                        <option>Dra. Elis Mántes - Medicina General (Disponible)</option>
+                    </select>
+                    
+                    <button class="btn-action" style="padding:8px; margin-top:5px;" onclick="alert('Profesional asignado correctamente al caso. Notificación enviada.')">Guardar Asignación</button>
+                </section>
+            </article>
+        </section>
+
+        <!-- APROBAR CONTENIDO (RF-UN-005) -->
+        <section id="contenido" class="dinamic-section">
+            <article class="panel">
+                <h3>Aprobar Contenido (RF-UN-005)</h3>
+                <p style="font-size:0.8rem; color:var(--muted);">Revisión y validación de información enviada por usuarios o redactores.</p>
+                <ul class="list" style="margin-top:10px;">
+                    <li>
+                        <span>Artículo: "Consejos de autocuidado emocional"</span> 
+                        <div style="display:flex; gap:5px;">
+                            <button class="btn-action" style="background:#0d9488;" onclick="alert('Contenido aprobado y publicado visiblemente.')">Aprobar</button>
+                            <button class="btn-action" style="background:#dc2626;" onclick="alert('Contenido rechazado con observaciones.')">Rechazar</button>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- PUBLICAR CAMPAÑAS (RF-NU-006) -->
+        <section id="campañas" class="dinamic-section">
+            <article class="panel">
+                <h3>Publicar Campañas (RF-NU-006)</h3>
+                <section style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
+                    <input type="text" placeholder="Título de la campaña" style="padding:8px; border:1px solid #cbd5e1; border-radius:4px;">
+                    <textarea placeholder="Contenido descriptivo de la campaña..." rows="3" style="padding:8px; border:1px solid #cbd5e1; border-radius:4px; font-family:Arial;"></textarea>
+                    <label style="font-size:0.75rem;">Material Multimedia (Imagen/Video):</label>
+                    <input type="file" style="font-size:0.8rem;">
+                    <button class="btn-action" style="padding:8px;" onclick="alert('¡Campaña publicada con éxito! Su estado cambió a publicada.')">Publicar Campaña</button>
+                </section>
+            </article>
+        </section>
+
+        <footer><p>Previnox  2026</p></footer>
+    </main>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

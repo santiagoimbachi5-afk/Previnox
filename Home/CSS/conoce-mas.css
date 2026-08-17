@@ -1,0 +1,96 @@
+body{
+    font-family: 'Inter', sans-serif;
+}
+.conocenos {
+  max-width: 1000px;
+  margin: 60px auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.conocenos h2 {
+  text-align: center;
+  color: #1e40af;
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+}
+
+.conocenos h3 {
+  color: #1e293b;
+  margin-top: 40px;
+  font-size: 1.6rem;
+}
+
+/* Tarjetas de equipo */
+.miembros {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #f9fbff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 15px;
+}
+
+.card-info h4 {
+  margin: 5px 0;
+  color: #1e40af;
+}
+
+.card-info p {
+  color: #555;
+}
+
+/* Proyectos */
+.cards-proyectos {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-proyecto {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card-proyecto:hover {
+  transform: scale(1.05);
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

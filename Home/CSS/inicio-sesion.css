@@ -7,6 +7,8 @@
   --purple: #9333ea;
   --green: #059669;
   --blue: #2563eb;
+  --orange: #b67131
+
 }
 
 /* Estilos generales */
@@ -102,6 +104,9 @@ p {
 
 .paciente {
   background: var(--blue);
+}
+.entidad{
+  background-color: var(--orange)
 }
 
 

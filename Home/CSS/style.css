@@ -14,22 +14,33 @@ body{
     min-height: 100vh;
 }
 .header{
+    position: fixed;
     display: flex;
+    height: 10%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-
+    z-index: 100; 
     padding: 20px 80px;
-
     background: rgba(255,255,255,0.9);
 
     
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* separa el logo del texto */
+}
+.logo img {
+  width: 30px; /* tamaño del logo */
+  height: auto;
 }
 .logo h1{
     font-family: 'Lobster Two', cursive;
 
     color: #1e40af;
 
-    font-size: 42px;
+    font-size: 30px;
 
     letter-spacing: 2px;
 

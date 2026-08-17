@@ -23,7 +23,7 @@ aside p{
 }
 
 .sidebar {
-  background-color: #059669;
+  background-color: #07be84;
   color: white;
   width: 250px;
   padding: 20px;
@@ -55,7 +55,7 @@ aside p{
   color: white;
   padding: 10px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 90px;
 }
 
 .contenido {

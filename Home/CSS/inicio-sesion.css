@@ -13,7 +13,6 @@
 
 /* Estilos generales */
 body {
-  
   font-family: Arial, sans-serif;
   margin: 0;
   background-size: cover;
@@ -39,7 +38,8 @@ body img{
   width: 100%;          
   height: 100%;        
   object-fit: cover;    
-  z-index: -4;         
+  z-index: -4;  
+        
 }
 
 /* Tarjeta */
@@ -55,6 +55,7 @@ article.card {
   gap: 20px;
   text-align: center;
   box-sizing: border-box;
+  
 }
 
 h1 {
@@ -73,13 +74,13 @@ p {
 .roles {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   margin-top: 10px;
 }
 
 .btn-role {
   border: none;
-  padding: 14px;
+  padding: 12px;
   border-radius: 6px;
   color: #fff;
   font-weight: bold;
@@ -92,21 +93,44 @@ p {
 .btn-role:hover {
   opacity: 0.9;
 }
+section .roles{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100px;
 
+}
 /* Colores por rol */
 .admin {
   background: var(--purple);
+  text-decoration: none;
+  color:white;
+  border-radius: 10px;
+  height: 20px;
 }
 
 .salud {
   background: var(--green);
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  height: 20px;
 }
 
 .paciente {
   background: var(--blue);
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  height: 20px;
 }
 .entidad{
-  background-color: var(--orange)
+background-color: var(--orange);
+text-decoration: none;
+color: white;
+border-radius: 10px;
+height: 20px;
+text-align: center;
 }
 
 

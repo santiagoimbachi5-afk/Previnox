@@ -7,12 +7,13 @@ body {
 }
 aside h2{
   font-family: 'Lobster Two', cursive;
+  color: #ffffff;
   padding: 2px;
   font-size: 40px;
   margin-top: 5px;
 }
 aside p{
-  color: yellow;
+  color: rgb(139, 238, 73);
   font-size: 12px;
   margin-top: -10px;
 }
@@ -23,7 +24,7 @@ aside p{
 }
 
 .sidebar {
-  background-color: #07be84;
+  background-color: #059669;
   color: white;
   width: 250px;
   padding: 20px;
@@ -45,12 +46,13 @@ aside p{
 }
 
 .sidebar li:hover {
-  background-color: #9c9a9a;
+  background-color: #313131;
+  border-radius: 5px;
 }
 
 .logout {
   margin-top: 20px;
-  background-color: #9099c2;
+  background-color: #213db8;
   border: none;
   color: white;
   padding: 10px;

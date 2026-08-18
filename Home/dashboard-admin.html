@@ -1,83 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Previnox - Admin</title>
-  <link rel="stylesheet" href="CSS/dashboard-admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previnox - Admin</title>
+    <link rel="stylesheet" href="CSS/dashboard-admin.css">
 </head>
-<body>
-  <aside>
-    <h1>Previnox Admin Andres</h1>
-    <p>Panel de Gestión</p>
-    <nav>
-      <button class="active" onclick="ir('inicio', this)">Inicio / Dashboard</button>
-      <button onclick="ir('usuarios', this)">Gestionar usuarios</button>
-      <button onclick="ir('reportes', this)">Ver reportes</button>
-      <button onclick="ir('publicaciones', this)">Crear publicaciones</button>
-      <button onclick="ir('alertas', this)">Monitorear alertas y SOS</button>
-      <button onclick="ir('profesionales', this)">Asignar profesionales</button>
-    </nav>
-  </aside>
 
-  <main>
-    <header>
-      <hgroup>
+<body>
+
+<aside>
+    <h1>Previnox Admin</h1>
+    <p>Panel de Gestión</p>
+
+    <nav>
+        <button class="active" onclick="ir('inicio', this)">Inicio / Dashboard</button>
+        <button onclick="ir('usuarios', this)">Gestionar Usuarios</button>
+        <button onclick="ir('reportes', this)">Generar Reportes</button>
+        <button onclick="ir('alertas', this)">Monitorizar Alertas</button>
+        <button onclick="ir('profesionales', this)">Asignar Profesionales</button>
+        <button onclick="ir('contenido', this)">Aprobar Contenido</button>
+        <button onclick="ir('campañas', this)">Publicar Campañas</button>
+    </nav>
+</aside>
+
+<main>
+
+<header>
+    <hgroup>
         <h2 id="titulo">Panel de Administración</h2>
         <p>Bienvenido, Administrador</p>
-      </hgroup>
-      <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
-    </header>
+    </hgroup>
+    <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
+</header>
 
-    <!-- INICIO -->
-    <section id="inicio" class="dinamic-section active">
-      <!-- métricas, estadísticas, gestión de usuarios, configuración -->
+<!-- DASHBOARD -->
+<section id="inicio" class="dinamic-section active">
+
+    <section class="metrics">
+        <article class="metric"><h3>Usuarios</h3><p>1,250</p></article>
+        <article class="metric" style="border-top-color:#0d9488"><h3>Activos</h3><p style="color:#0d9488">320</p></article>
+        <article class="metric" style="border-top-color:#dc2626"><h3>Alertas</h3><p style="color:#dc2626">18</p></article>
+        <article class="metric" style="border-top-color:#9333ea"><h3>Reportes</h3><p style="color:#9333ea">45</p></article>
     </section>
 
-    <!-- GESTIONAR USUARIOS -->
-    <section id="usuarios" class="dinamic-section">
-      <!-- módulo de gestión de usuarios -->
+    <section class="grid-2">
+
+        <article class="panel">
+            <h3>Estadísticas de Uso</h3>
+            <p>Usuarios activos durante los últimos meses</p>
+            <figure class="chart-container">
+                <canvas id="graficoUso"></canvas>
+            </figure>
+        </article>
+
+        <article class="panel">
+            <h3>Gestión Rápida de Usuarios</h3>
+            <ul class="list">
+                <li><span>Carlos Perez</span><button class="btn-action" onclick="alert('Editando a Carlos')">Editar</button></li>
+                <li><span>Jean Gomez</span><button class="btn-action" onclick="alert('Editando a Jean')">Editar</button></li>
+                <li><span>Elis Mántes</span><button class="btn-action" onclick="alert('Editando a Elis')">Editar</button></li>
+            </ul>
+        </article>
+
     </section>
+</section>
 
-    <!-- VER REPORTES -->
-    <section id="reportes" class="dinamic-section">
-      <!-- reportes y estadísticas -->
-    </section>
+<!-- USUARIOS -->
+<section id="usuarios" class="dinamic-section">
+    <article class="panel">
+        <h3>Módulo de Gestión de Usuarios (RF-NU-001)</h3>
 
-    <!-- CREAR PUBLICACIONES -->
-    <section id="publicaciones" class="dinamic-section">
-      <!-- creación de publicaciones -->
-    </section>
+        <form onsubmit="event.preventDefault(); alert('Usuario registrado con éxito');" style="display:flex;flex-direction:column;gap:10px;margin-top:10px;">
+            <input type="text" placeholder="Nombre completo" required>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="tel" placeholder="Número de teléfono" required>
+            <input type="text" placeholder="Nombre de usuario" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit" class="btn-action">Registrar Usuario</button>
+        </form>
 
-    <!-- MONITOREAR ALERTAS -->
-    <section id="alertas" class="dinamic-section">
-      <!-- monitoreo de alertas -->
-    </section>
+        <h4>Usuarios Registrados</h4>
+        <ul class="list">
+            <li><span>Carlos Perez (Paciente)</span><button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
+            <li><span>Jean Gomez (Salud)</span><button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
+            <li><span>Elis Mántes (Admin)</span><button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
+        </ul>
+    </article>
+</section>
 
-    <!-- ASIGNAR PROFESIONALES -->
-    <section id="profesionales" class="dinamic-section">
-      <!-- asignación de profesionales -->
-    </section>
+<!-- REPORTES -->
+<section id="reportes" class="dinamic-section">
+    <article class="panel">
+        <h3>Generar Reportes y Estadísticas (RF-NU-002)</h3>
 
-    <footer><p>Previnox &copy; 2026</p></footer>
-  </main>
+        <section style="display:flex;flex-direction:column;gap:10px;margin-top:10px;">
+            <label>Tipo de Reporte:</label>
 
-  <script>
-    function ir(id, btn) {
-      document.querySelectorAll('.dinamic-section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      if(btn) btn.classList.add('active');
-      const titulos = {
-        inicio:'Panel de Administración',
-        usuarios:'Gestión de Usuarios',
-        reportes:'Reportes y Estadísticas',
-        publicaciones:'Creación de Publicaciones',
-        alertas:'Monitoreo de Alertas y SOS',
-        profesionales:'Asignación de Profesionales'
-      };
-      document.getElementById('titulo').innerText = titulos[id];
-    }
-  </script>
+            <select>
+                <option>Reporte de Actividad General</option>
+                <option>Historial de Alertas SOS</option>
+                <option>Métricas de Retención</option>
+            </select>
+
+            <section style="display:flex;gap:10px;">
+                <article style="flex:1">
+                    <label>Desde:</label>
+                    <input type="date">
+                </article>
+
+                <article style="flex:1">
+                    <label>Hasta:</label>
+                    <input type="date">
+                </article>
+            </section>
+
+            <button class="config-btn" onclick="alert('Reporte generado correctamente con los filtros seleccionados.')">
+                📥 Generar y Descargar Reporte
+            </button>
+        </section>
+    </article>
+</section>
+
+<!-- ALERTAS -->
+<section id="alertas" class="dinamic-section">
+    <article class="panel" style="border-top:4px solid #dc2626;">
+        <h3 style="color:#dc2626">Monitorizar Alertas y SOS (RF-UN-003)</h3>
+
+        <ul class="list">
+            <li>
+                <span style="color:#dc2626">SOS - Luis Martinez (Impacto Alto)</span>
+                <select onchange="alert('Estado actualizado a: '+this.value)">
+                    <option>Pendiente</option>
+                    <option selected>En revisión</option>
+                    <option>Atendida</option>
+                    <option>Descartada</option>
+                    <option>Escalada</option>
+                </select>
+            </li>
+
+            <li>
+                <span style="color:#dc2626">Inactividad - Sofia Ruiz (Impacto Medio)</span>
+                <select onchange="alert('Estado actualizado a: '+this.value)">
+                    <option selected>Pendiente</option>
+                    <option>En revisión</option>
+                    <option>Atendida</option>
+                    <option>Descartada</option>
+                    <option>Escalada</option>
+                </select>
+            </li>
+        </ul>
+    </article>
+</section>
+
+<!-- PROFESIONALES -->
+<section id="profesionales" class="dinamic-section">
+    <article class="panel">
+        <h3>Asignación de Profesionales (RF-NU-004)</h3>
+
+        <section style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+            <label>Caso / Usuario a Asignar:</label>
+
+            <select>
+                <option>Caso #102 - María (Urgente)</option>
+                <option>Caso #105 - Carlos Perez</option>
+            </select>
+
+            <label>Seleccionar Profesional:</label>
+
+            <select>
+                <option>Dr. Jean Gomez - Psicología (Disponible)</option>
+                <option>Dra. Elis Mántes - Medicina General (Disponible)</option>
+            </select>
+
+            <button class="btn-action" onclick="alert('Profesional asignado correctamente al caso. Notificación enviada.')">
+                Guardar Asignación
+            </button>
+        </section>
+    </article>
+</section>
+
+<!-- CONTENIDO -->
+<section id="contenido" class="dinamic-section">
+    <article class="panel">
+        <h3>Aprobar Contenido (RF-UN-005)</h3>
+        <p>Revisión y validación de información enviada por usuarios o redactores.</p>
+
+        <ul class="list">
+            <li>
+                <span>Artículo: "Consejos de autocuidado emocional"</span>
+
+                <section style="display:flex;gap:5px;">
+                    <button class="btn-action" style="background:#0d9488;" onclick="alert('Contenido aprobado y publicado visiblemente.')">Aprobar</button>
+                    <button class="btn-action" style="background:#dc2626;" onclick="alert('Contenido rechazado con observaciones.')">Rechazar</button>
+                </section>
+            </li>
+        </ul>
+    </article>
+</section>
+
+<!-- CAMPAÑAS -->
+<section id="campañas" class="dinamic-section">
+    <article class="panel">
+        <h3>Publicar Campañas (RF-NU-006)</h3>
+
+        <section style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+            <input type="text" placeholder="Título de la campaña">
+
+            <textarea placeholder="Contenido descriptivo de la campaña..." rows="3"></textarea>
+
+            <label>Material Multimedia (Imagen/Video):</label>
+
+            <input type="file">
+
+            <button class="btn-action" onclick="alert('¡Campaña publicada con éxito! Su estado cambió a publicada.')">
+                Publicar Campaña
+            </button>
+        </section>
+    </article>
+</section>
+<footer>
+    <p>Previnox 2026</p>
+</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="Js/dashboard-admin.js"></script>
 </body>
 </html>

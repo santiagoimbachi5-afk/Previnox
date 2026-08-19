@@ -1,0 +1,249 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  overflow: hidden;
+}
+
+/* Sidebar en Azul */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 100%);
+  color: #ffffff;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.brand span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.user-profile-info {
+  margin: 20px 0;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.user-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.badge-role {
+  font-size: 0.75rem;
+  background-color: #3b82f6;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menu-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.menu-btn.active {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.panic-btn {
+  color: #fca5a5;
+}
+
+.panic-btn:hover {
+  background-color: #dc2626;
+  color: #fff;
+}
+
+/* Área de Contenido Principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.top-header {
+  background-color: #ffffff;
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.logout-btn {
+  background-color: #475569;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.content-body {
+  padding: 32px;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* Tarjetas */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.info-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.alert-card {
+  border-left: 5px solid #ef4444;
+}
+
+/* Botón de Pánico Grande */
+.panic-container {
+  text-align: center;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.big-panic-button {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+  color: white;
+  border: none;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 30px auto;
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.big-panic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(239, 68, 68, 0.6);
+}
+
+.big-panic-button:active {
+  transform: scale(0.95);
+}
+
+.panic-icon {
+  font-size: 3rem;
+}
+
+.panic-status {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: none;
+}
+
+/* Elementos adicionales */
+.activity-list li {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+}
+
+.action-btn, .action-btn-main {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.form-group select, .form-group input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.reminder-box {
+  background: white;
+  padding: 16px;
+  border-left: 4px solid #3b82f6;
+  margin-bottom: 12px;
+  border-radius: 4px;
+}

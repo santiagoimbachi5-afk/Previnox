@@ -2,12 +2,168 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="CSS/dashboard-usuario.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="128x128" href="Img/fongo-previnox.png">
-  <title>Previonx - Paciente</title>
+  <title>Previnox - Módulo Paciente</title>
+  <link rel="stylesheet" href="CSS/dashboard-usuario.css">
 </head>
 <body>
- <h1>Andres Samboni</h1>
+
+  <!-- Barra Lateral (Menú Azul a la Izquierda) -->
+  <aside class="sidebar">
+    <header class="brand">
+      <h2>Previnox</h2>
+      <p>Panel de Paciente</p>
+    </header>
+
+    <section class="user-profile-info">
+      <p class="user-label">2. Andrés Samboni</p>
+      <span class="badge-role">Rol Paciente</span>
+    </section>
+
+    <nav class="sidebar-menu">
+      <button class="menu-btn active" onclick="showSection('info', this)">
+        <span></span> Acceder a Información
+      </button>
+
+      <button class="menu-btn panic-btn" onclick="showSection('panico', this)">
+        <span></span> Botón de Pánico
+      </button>
+
+      <button class="menu-btn" onclick="showSection('emergencias', this)">
+        <span></span> Atender Emergencias
+      </button>
+
+      <button class="menu-btn" onclick="showSection('talleres', this)">
+        <span></span> Talleres y Grupos
+      </button>
+
+      <button class="menu-btn" onclick="showSection('citas', this)">
+        <span></span> Agendar Citas
+      </button>
+
+      <button class="menu-btn" onclick="showSection('recordatorios', this)">
+        <span></span> Recordatorios
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Contenido Principal Semántico -->
+  <main class="main-content">
+    <header class="top-header">
+      <h1 id="page-title">Panel de Control del Paciente</h1>
+      <button class="logout-btn">Cerrar Sesión</button>
+    
+    </header>
+
+    <article class="content-body">
+
+      <!-- Sección 1: Información -->
+      <section id="info" class="content-section active">
+        <h2>Información General y Recursos</h2>
+        <p class="subtitle">Bienvenido a tu portal de salud integral.</p>
+        
+        <ul class="cards-grid">
+          <li class="info-card">
+            <h3>Guías de Salud</h3>
+            <p>Accede a manuales de cuidado personal, nutrición y bienestar preventivo.</p>
+          </li>
+          <li class="info-card">
+            <h3>Historial Médico</h3>
+            <p>Consulta tus diagnósticos anteriores, recetas y recomendaciones médicas.</p>
+          </li>
+          <li class="info-card">
+            <h3>Mi Representante Asignado</h3>
+            <p><strong>Dr. Carlos Pérez</strong> (Especialista de Apoyo)<br>Estado: En Línea</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Sección 2: Botón de Pánico -->
+      <section id="panico" class="content-section">
+        <article class="panic-container">
+          <h2>Módulo de Auxilio / Alerta Inmediata</h2>
+          <p>Presiona el botón para notificar inmediatamente a tu representante asignado sobre una situación crítica.</p>
+
+          <button class="big-panic-button" onclick="triggerPanicAlert()">
+            <span class="panic-icon">🚨</span>
+            <span>ACTIVAR BOTÓN DE PÁNICO</span>
+          </button>
+
+          <output id="panic-status" class="panic-status"></output>
+        </article>
+      </section>
+
+      <!-- Sección 3: Emergencias -->
+      <section id="emergencias" class="content-section">
+        <h2>Atención de Emergencias</h2>
+        <p>Líneas de atención directa y protocolos para imprevistos.</p>
+
+        <ul class="cards-grid">
+          <li class="info-card alert-card">
+            <h3>Línea Directa de Urgencias</h3>
+            <p>Llame al: <strong>01-8000-123-456</strong></p>
+          </li>
+          <li class="info-card">
+            <h3>Centro de Salud Más Cercano</h3>
+            <p>Hospital Universitario - A 10 minutos de tu ubicación registrada.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Sección 4: Talleres -->
+      <section id="talleres" class="content-section">
+        <h2>Talleres Virtuales y Grupos de Apoyo</h2>
+        <p>Inscríbete a las actividades de integración y aprendizaje.</p>
+
+        <ul class="activity-list">
+          <li>
+            <strong>Taller de Control del Estrés</strong>
+            <span>Martes y Jueves - 4:00 PM</span>
+            <button class="action-btn">Unirse</button>
+          </li>
+          <li>
+            <strong>Grupo de Apoyo Emocional</strong>
+            <span>Sábados - 10:00 AM</span>
+            <button class="action-btn">Unirse</button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Sección 5: Citas -->
+      <section id="citas" class="content-section">
+        <h2>Agendar Citas con Profesional</h2>
+        <p>Selecciona la fecha para programar tu próxima consulta de seguimiento.</p>
+
+        <form class="form-group" onsubmit="event.preventDefault();">
+          <label for="profesional">Especialista:</label>
+          <select id="profesional">
+            <option>Dr. Carlos Pérez (Psicología / Apoyo)</option>
+            <option>Dra. Elena Gómez (Medicina General)</option>
+          </select>
+
+          <label for="fecha">Fecha:</label>
+          <input type="date" id="fecha">
+
+          <button type="submit" class="action-btn-main">Confirmar Cita</button>
+        </form>
+      </section>
+
+      <!-- Sección 6: Recordatorios -->
+      <section id="recordatorios" class="content-section">
+        <h2>Recordatorios de Tratamiento</h2>
+        <article class="reminder-box">
+          <p><strong>Medicamento A:</strong> Tomar 1 pastilla cada 8 horas (Próxima: 2:00 PM)</p>
+        </article>
+        <article class="reminder-box">
+          <p><strong>Sesión Virtual:</strong> Hoy a las 5:00 PM con tu representante.</p>
+        </article>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- Nota: recuerda renombrar tu archivo a script.js (con la 't') -->
+  <script src="Js/dashboard-usuario.js"></script>
 </body>
 </html>

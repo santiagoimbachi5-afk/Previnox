@@ -1,115 +1,192 @@
-body {
-background-color: white,
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #fdfffd,
+        #0d6efd
+    );
+
+    min-height: 100vh;
+}
+.header{
+    position: fixed;
+    display: flex;
+    height: 10%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100; 
+    padding: 20px 80px;
+    background: rgba(255,255,255,0.9);
+
+    
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+.logo img {
+  width: 30px; 
+  height: auto;
+}
+.logo h1{
+    font-family: 'Lobster Two', cursive;
+
+    color: #1e40af;
+
+    font-size: 30px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
 }
 
-.sobre-nosotros {
-  font-family: 'Inter', sans-serif;
-  color: #3d3d3d;
-  background-color: #f9fbff;
-  padding: 40px 80px;
+.menu{
+    display: flex;
+    gap: 50px;
 }
+.menu a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    transition: 0.3s;
 
-/* Banner */
-.banner {
-  background-color: #fcfcfc;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  height: 350px;
-  border-radius: 40px;
-  margin-bottom: 60px;
 }
+.menu a:hover{
+    color: #0d6efd;
 
-.overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #222a3a;
-  color: white;
-  padding: 30px 50px;
-  border-radius: 100px;
-  text-align: center;
 }
-
-.overlay h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.overlay p {
-  font-size: 16px;
-  margin: 5px 0;
-  
-}
-
-.overlay em {
-  font-style: italic;
-  font-size: 14px;
-}
-
-/* Misión y Visión */
-.mision-vision {
-  color: #0c0c0c;
-  text-align: center;
-  margin-bottom: 60px;
+.header-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
   background-color: white;
-  border-radius: 20px;
-  
 }
 
-.cards {
+
+.acciones-header {
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 20px;
+  gap: 15px; 
 }
 
-.card {
-  background:white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  width: 45%;
-  padding: 20px;
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-.card h4 {
-  color: #070707;
-  margin-bottom: 10px;
-}
-
-/* Valores */
-.valores {
-  text-align: center;
-}
-
-.lista-valores {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 20px;
-}
-
-.valor img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.valor p {
+/* Botón de Pánico */
+.boton-panico {
+  background-color: red;
+  color: white;
   font-weight: bold;
-  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
 }
 
+.boton-panico:hover {
+  transform: scale(1.05);
+}
 
+/* Botón de Inicio de Sesión */
+.boton-login {
+  background-color: #1e40af;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
 
+.boton-login:hover {
+  transform: scale(1.05);
+}
+
+/* Footer*/
+.footer{
+    background: #0d1b3e;
+    color: white;
+
+    padding-top: 50px;
+
+    border-radius: 40px 40px 0 0;
+}
+
+/* Contenedor */
+
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    padding: 0 80px 40px;
+}
+
+/* Info */
+
+.footer-info{
+    max-width: 350px;
+}
+
+.footer-info h2{
+    margin-bottom: 15px;
+    color: #4f9cff;
+}
+
+.footer-info p{
+    line-height: 1.7;
+    color: #d1d9f0;
+}
+
+/* Links */
+
+.footer-links{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links h3{
+    margin-bottom: 15px;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: #d1d9f0;
+
+    margin-bottom: 10px;
+
+    transition: 0.3s;
+}
+
+.footer-links a:hover{
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Contacto */
+
+.footer-contact h3{
+    margin-bottom: 15px;
+}
+
+.footer-contact p{
+    margin-bottom: 10px;
+    color: #d1d9f0;
+}
+
+/*  Parte Final */
+
+.footer-bottom{
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    padding: 20px;
+}

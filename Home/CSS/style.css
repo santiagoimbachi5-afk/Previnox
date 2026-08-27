@@ -29,10 +29,10 @@ body{
 .logo {
   display: flex;
   align-items: center;
-  gap: 20px; /* separa el logo del texto */
+  gap: 20px; 
 }
 .logo img {
-  width: 30px; /* tamaño del logo */
+  width: 30px; 
   height: auto;
 }
 .logo h1{

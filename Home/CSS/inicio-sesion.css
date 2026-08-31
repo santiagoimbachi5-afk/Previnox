@@ -1,0 +1,136 @@
+/* Variables de color HM */
+:root {
+  --bg: #4f96d1a2;
+  --card: #fff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --purple: #9333ea;
+  --green: #059669;
+  --blue: #2563eb;
+  --orange: #b67131
+
+}
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+article h1{
+  font-family: 'Lobster Two', cursive;
+  padding: 10px;
+  font-size: 60px;
+}
+body img{
+  position: fixed;  
+  top: 0;
+  left: 0;
+  width: 100%;          
+  height: 100%;        
+  object-fit: cover;    
+  z-index: -4;  
+        
+}
+
+/* Tarjeta */
+article.card {
+  background: var(--card);
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  
+}
+
+h1 {
+  color: var(--blue);
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Roles */
+.roles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-role {
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-role:hover {
+  opacity: 0.9;
+}
+section .roles{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100px;
+
+}
+/* Colores por rol */
+.admin {
+  background: var(--purple);
+  text-decoration: none;
+  color:white;
+  border-radius: 10px;
+  height: 20px;
+}
+
+.salud {
+  background: var(--green);
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  height: 20px;
+}
+
+.paciente {
+  background: var(--blue);
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  height: 20px;
+}
+.entidad{
+background-color: var(--orange);
+text-decoration: none;
+color: white;
+border-radius: 10px;
+height: 20px;
+text-align: center;
+}
+
+

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previnox - Profesional de Salud</title>
+  <link rel="stylesheet" href="CSS/dashboard-profesional.css">
+</head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Profesional de Salud - Previnox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Previnox</h2>
+      <p>Panel Profesional de Salud</p>
+      <ul>
+        <li onclick="mostrarSeccion('perfil')">Perfil</li>
+        <li onclick="mostrarSeccion('citas')">Programación de Citas</li>
+        <li onclick="mostrarSeccion('emergencias')">Atender Emergencias</li>
+        <li onclick="mostrarSeccion('reportes')">Reportes Generados</li>
+        <li onclick="mostrarSeccion('solicitudes')">Solicitudes de Usuarios</li>
+        <li onclick="mostrarSeccion('planes')">Gestionar Planes de Tratamiento</li>
+      </ul>
+      <button class="logout">Cerrar Sesión</button>
+    </aside>
+
+    <main class="contenido">
+      <section id="perfil" class="seccion activa">
+        <h3>Perfil del Profesional</h3>
+        <p>Información del usuario, entidades asociadas y datos médicos relevantes.</p>
+        <section id="paciente" class="seccion activa">
+  <h3>Datos del Paciente</h3>
+   <div class="card-paciente">
+    <p><strong>Nombre:</strong> Luis Martínez</p>
+    <p><strong>Edad:</strong> 35 años</p>
+    <p><strong>Historial Médico:</strong> Hipertensión, control mensual</p>
+    <p><strong>Plan Activo:</strong> 70%</p>
+    <button class="btn-entidades" onclick="mostrarEntidades()">Ver entidades asociadas</button>
+  </div>
+
+  <!-- Entidades asociadas -->
+  <div id="entidades" class="entidades oculto">
+    <ul>
+      <li>EPS: Salud Total</li>
+      <li>Médico tratante: Dra. Elena Rodríguez</li>
+      <li>Historial de tratamientos: Control de presión, medicación diaria</li>
+    </ul>
+  </div>
+ 
+</section>
+
+      </section>
+
+      <section id="citas" class="seccion">
+        <h3>Programación de Citas</h3>
+        <p>Calendario interactivo y asignación automática de profesionales.</p>
+         <div class="calendario">
+    <input type="date" id="fechaCita">
+    <input type="time" id="horaCita">
+    <button onclick="agendarCita()">Agendar Cita</button>
+  </div>
+
+  <!-- Botón para asignar profesional automáticamente -->
+  <button class="btn-auto" onclick="asignarProfesional()">Asignar profesional automáticamente</button>
+
+  <!-- Lista de citas -->
+  <div class="lista-citas">
+    <h4>Citas pendientes y confirmadas</h4>
+    <ul id="listaCitas">
+      <li>Paciente Juan Pérez → Consulta general → 10:00 AM</li>
+    </ul>
+  </div>
+      </section>
+
+      <section id="emergencias" class="seccion">
+        <h3>Atender Emergencias</h3>
+        <p>Gestión de alertas activas y atención prioritaria.</p>
+        <button class="btn-emergencia" onclick="atenderEmergencia()">🚨 Atender emergencia</button>
+
+  <!-- Lista de alertas activas -->
+  <div class="alertas">
+    <h4>Alertas activas</h4>
+    <ul id="listaAlertas">
+      <li class="alta">Alerta activada por María Gómez → Ubicación: Sala 3 (Prioridad: Alta)</li>
+      <li class="media">Alerta activada por Juan Pérez → Ubicación: Pasillo 2 (Prioridad: Media)</li>
+      <li class="baja">Alerta activada por Ana Torres → Ubicación: Sala 1 (Prioridad: Baja)</li>
+    </ul>
+  </div>
+        
+      </section>
+
+      <section id="reportes" class="seccion">
+        
+        <h3>Reportes Generados</h3>
+        <p>Visualización y descarga de reportes clínicos.</p>
+        <div class="panel-reportes">
+    <canvas id="graficoCitas"></canvas>
+  </div>
+
+  <!-- Tabla dinámica -->
+  <table class="tabla-reportes">
+    <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Servicio</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Luis Martínez</td>
+        <td>Consulta general</td>
+        <td>Activo</td>
+      </tr>
+      <tr>
+        <td>María Gómez</td>
+        <td>Urgencias</td>
+        <td>Finalizado</td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Botones -->
+  <div class="acciones-reportes">
+    <button onclick="visualizarReportes()">Visualizar</button>
+    <button onclick="analizarReportes()">Analizar</button>
+    <button onclick="descargarPDF()">Descargar PDF</button>
+    <button onclick="descargarExcel()">Descargar Excel</button>
+    
+  </div>
+      </section>
+
+      <section id="solicitudes" class="seccion">
+        <h3>Solicitudes de Usuarios</h3>
+        <p>Clasificación y respuesta a requerimientos no urgentes.</p>
+        <div class="bandeja-solicitudes">
+    <ul id="listaSolicitudes">
+      <li>Solicitud: Certificado médico → Estado: Pendiente</li>
+      <li>Solicitud: Copia de historia clínica → Estado: Pendiente</li>
+      <li>Solicitud: Soporte técnico → Estado: En proceso</li>
+    </ul>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="acciones-solicitudes">
+    <button onclick="clasificarSolicitud()">Clasificar</button>
+    <button onclick="responderSolicitud()">Responder</button>
+    <button onclick="asignarResponsable()">Asignar responsable</button>
+  </div>
+      </section>
+
+      <section id="planes" class="seccion">
+        <h3>Gestión de Planes de Tratamiento</h3>
+        <p>Modificación, suspensión o reemplazo de planes activos.</p>
+        <div class="lista-planes">
+    <ul id="listaPlanes">
+      <li>
+        Plan de tratamiento de Elena Rodríguez → Avance 45%
+        <div class="acciones-plan">
+          <button onclick="suspenderPlan(this)">Suspender</button>
+          <button onclick="modificarPlan(this)">Modificar</button>
+          <button onclick="terminarPlan(this)">Terminar</button>
+          <button onclick="reemplazarPlan(this)">Reemplazar</button>
+        </div>
+      </li>
+      <li>
+        Plan de tratamiento de Luis Martínez → Avance 70%
+        <div class="acciones-plan">
+          <button onclick="suspenderPlan(this)">Suspender</button>
+          <button onclick="modificarPlan(this)">Modificar</button>
+          <button onclick="terminarPlan(this)">Terminar</button>
+          <button onclick="reemplazarPlan(this)">Reemplazar</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>Previnox Sistema Clínico © 2026</footer>
+
+  <script src="Js/dashboard-profesional.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

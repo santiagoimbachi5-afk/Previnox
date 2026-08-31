@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/login-entidades_salud.css">
+    <title>Document</title>
+</head>
+<body>
+    <article class="card">
+    <h1>Acceso Entidades de Salud</h1>
+    <p>Gestión Clínica </p>
+
+    <form onsubmit="ingresar(event)">
+      <label>Correo de la Entidad
+        <input type="email" placeholder="entidad@previnox.com" required>
+      </label>
+      <label>Contraseña
+        <input type="password" placeholder="••••" required>
+      </label>
+      <button type="submit" class="btn-submit">Iniciar Sesión</button>
+    </form>
+
+    <button class="btn-back" onclick="window.location.href='index.html'">← Volver</button>
+  </article>
+
+<script src="Js/login-entidaes_salud.js"></script>
+    
+</body>
+</html>

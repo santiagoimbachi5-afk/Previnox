@@ -1,0 +1,163 @@
+:root {
+    --azul: #1769e8;
+    --azul-claro: #eef5ff;
+    --texto: #1f2937;
+    --gris: #667085;
+    --borde: #dbe4f0;
+    --fondo: #f6f9fd;
+    --alerta: #fff4e5;
+    --alerta-texto: #8a4b08;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--texto);
+    background: var(--fondo);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    padding: 18px 8%;
+    color: white;
+    background: var(--azul);
+}
+
+header section,
+main,
+footer {
+    max-width: 1000px;
+    margin: auto;
+}
+
+header h1,
+header p {
+    margin: 0;
+}
+
+header p {
+    opacity: .9;
+}
+
+main {
+    padding: 42px 20px;
+}
+
+.volver {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: var(--azul);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.hero,
+article,
+.emergencia {
+    padding: 28px;
+    margin-bottom: 20px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #eef5ff, #ffffff);
+}
+
+.hero h2 {
+    color: var(--azul);
+    font-size: 30px;
+}
+
+h2,
+h3 {
+    margin-top: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.grid article {
+    margin: 0;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    color: var(--azul);
+    background: var(--azul-claro);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.emergencia {
+    color: var(--alerta-texto);
+    background: var(--alerta);
+    border-color: #f5c982;
+}
+
+.lineas {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.lineas a {
+    display: grid;
+    gap: 3px;
+    padding: 15px;
+    color: var(--texto);
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.lineas a:hover {
+    border-color: var(--azul);
+    background: var(--azul-claro);
+}
+
+.lineas strong {
+    color: var(--azul);
+}
+
+.lineas span {
+    color: var(--gris);
+}
+
+footer {
+    padding: 20px;
+    color: var(--gris);
+    font-size: 14px;
+    text-align: center;
+}
+
+footer a {
+    color: var(--azul);
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 28px 16px;
+    }
+
+    .hero,
+    article,
+    .emergencia {
+        padding: 20px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+}

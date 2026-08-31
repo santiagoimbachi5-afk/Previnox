@@ -1,229 +1,2598 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Previnox - Admin</title>
+
     <link rel="stylesheet" href="/style/style.css">
-</head>
+    </head>
 
 <body>
 
+<!-- =========================
+     BARRA LATERAL
+========================= -->
+
 <aside>
+
     <h1>Previnox Admin</h1>
+
     <p>Panel de Gestión</p>
 
     <nav>
-        <button class="active" onclick="ir('inicio', this)">Inicio / Dashboard</button>
-        <button onclick="ir('usuarios', this)">Gestionar Usuarios</button>
-        <button onclick="ir('reportes', this)">Generar Reportes</button>
-        <button onclick="ir('alertas', this)">Monitorizar Alertas</button>
-        <button onclick="ir('profesionales', this)">Asignar Profesionales</button>
-        <button onclick="ir('contenido', this)">Aprobar Contenido</button>
-        <button onclick="ir('campañas', this)">Publicar Campañas</button>
+
+        <button class="active"
+            onclick="ir('inicio',this)">
+            Inicio / Dashboard
+        </button>
+
+        <button
+            onclick="ir('usuarios',this)">
+            Gestionar Usuarios
+        </button>
+
+        <button
+            onclick="ir('reportes',this)">
+            Generar Reportes
+        </button>
+
+        <button
+            onclick="ir('alertas',this)">
+            Monitorizar Alertas
+        </button>
+
+        <button
+            onclick="ir('profesionales',this)">
+            Asignar Profesionales
+        </button>
+
+        <button
+            onclick="ir('contenido',this)">
+            Aprobar Contenido
+        </button>
+
+        <button
+            onclick="ir('campañas',this)">
+            Publicar Campañas
+        </button>
+
     </nav>
+
 </aside>
+
+
+<!-- =========================
+     CONTENIDO PRINCIPAL
+========================= -->
 
 <main>
 
-<header>
-    <hgroup>
-        <h2 id="titulo">Panel de Administración</h2>
-        <p>Bienvenido, Administrador</p>
-    </hgroup>
-    <button class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</button>
-</header>
+    <!-- =========================
+         ENCABEZADO
+    ========================= -->
 
-<!-- DASHBOARD -->
-<section id="inicio" class="dinamic-section active">
+    <header>
 
-    <section class="metrics">
-        <article class="metric"><h3>Usuarios</h3><p>1,250</p></article>
-        <article class="metric" style="border-top-color:#0d9488"><h3>Activos</h3><p style="color:#0d9488">320</p></article>
-        <article class="metric" style="border-top-color:#dc2626"><h3>Alertas</h3><p style="color:#dc2626">18</p></article>
-        <article class="metric" style="border-top-color:#9333ea"><h3>Reportes</h3><p style="color:#9333ea">45</p></article>
+        <hgroup>
+
+            <h2 id="titulo">
+                Panel de Administración
+            </h2>
+
+            <p>
+                Bienvenido, Administrador
+            </p>
+
+        </hgroup>
+
+
+        <button
+            class="logout"
+            onclick="window.location.href='index.html'">
+
+            Cerrar Sesión
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         DASHBOARD
+    ================================================== -->
+
+    <section
+        id="inicio"
+        class="dinamic-section active">
+
+        <section class="metrics">
+
+            <article class="metric">
+
+                <h3>Usuarios</h3>
+
+                <p>6</p>
+
+            </article>
+
+
+            <article
+                class="metric"
+                style="border-top-color:#0d9488">
+
+                <h3>Activos</h3>
+
+                <p style="color:#0d9488">
+                    2
+                </p>
+
+            </article>
+
+
+            <article
+                class="metric"
+                style="border-top-color:#dc2626">
+
+                <h3>Alertas</h3>
+
+                <p style="color:#dc2626">
+                    18
+                </p>
+
+            </article>
+
+
+            <article
+                class="metric"
+                style="border-top-color:#9333ea">
+
+                <h3>Reportes</h3>
+
+                <p style="color:#9333ea">
+                    6
+                </p>
+
+            </article>
+
+        </section>
+
+
+
+        <section class="grid-2">
+
+            <article class="panel">
+
+                <h3>
+                    Estadísticas de Uso
+                </h3>
+
+                <p>
+                    Usuarios activos durante los últimos meses
+                </p>
+
+                <figure class="chart-container">
+
+                    <canvas id="graficoUso"></canvas>
+
+                </figure>
+
+            </article>
+
+
+
+            <article class="panel">
+
+                <h3>
+                    Gestión Rápida de Usuarios
+                </h3>
+
+                <ul class="list">
+
+                    <li>
+
+                        <span>
+                            Carlos Perez
+                        </span>
+
+                        <button
+                            class="btn-action"
+                            onclick="alert('Editando a Carlos')">
+
+                            Editar
+
+                        </button>
+
+                    </li>
+
+
+                    <li>
+
+                        <span>
+                            Jean Gomez
+                        </span>
+
+                        <button
+                            class="btn-action"
+                            onclick="alert('Editando a Jean')">
+
+                            Editar
+
+                        </button>
+
+                    </li>
+
+
+                    <li>
+
+                        <span>
+                            Elis Mántes
+                        </span>
+
+                        <button
+                            class="btn-action"
+                            onclick="alert('Editando a Elis')">
+
+                            Editar
+
+                        </button>
+
+                    </li>
+
+                </ul>
+
+            </article>
+
+        </section>
+
     </section>
 
-    <section class="grid-2">
 
-        <article class="panel">
-            <h3>Estadísticas de Uso</h3>
-            <p>Usuarios activos durante los últimos meses</p>
-            <figure class="chart-container">
-                <canvas id="graficoUso"></canvas>
-            </figure>
-        </article>
 
-        <article class="panel">
-            <h3>Gestión Rápida de Usuarios</h3>
-            <ul class="list">
-                <li><span>Carlos Perez</span><button class="btn-action" onclick="alert('Editando a Carlos')">Editar</button></li>
-                <li><span>Jean Gomez</span><button class="btn-action" onclick="alert('Editando a Jean')">Editar</button></li>
-                <li><span>Elis Mántes</span><button class="btn-action" onclick="alert('Editando a Elis')">Editar</button></li>
-            </ul>
-        </article>
+    <!-- ==================================================
+         GESTIONAR USUARIOS
+    ================================================== -->
 
-    </section>
-</section>
+    <section
+        id="usuarios"
+        class="dinamic-section">
 
-<!-- USUARIOS -->
-<section id="usuarios" class="dinamic-section">
-    <article class="panel">
-        <h3>Módulo de Gestión de Usuarios (RF-NU-001)</h3>
+        <article class="panel usuarios-panel">
 
-        <form onsubmit="event.preventDefault(); alert('Usuario registrado con éxito');" style="display:flex;flex-direction:column;gap:10px;margin-top:10px;">
-            <input type="text" placeholder="Nombre completo" required>
-            <input type="email" placeholder="Correo electrónico" required>
-            <input type="tel" placeholder="Número de teléfono" required>
-            <input type="text" placeholder="Nombre de usuario" required>
-            <input type="password" placeholder="Contraseña" required>
-            <button type="submit" class="btn-action">Registrar Usuario</button>
-        </form>
+            <header class="usuarios-header">
 
-        <h4>Usuarios Registrados</h4>
-        <ul class="list">
-            <li><span>Carlos Perez (Paciente)</span><button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
-            <li><span>Jean Gomez (Salud)</span><button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
-            <li><span>Elis Mántes (Admin)</span><button class="btn-action" onclick="alert('Modificando usuario')">Modificar</button></li>
-        </ul>
-    </article>
-</section>
+                <section>
 
-<!-- REPORTES -->
-<section id="reportes" class="dinamic-section">
-    <article class="panel">
-        <h3>Generar Reportes y Estadísticas (RF-NU-002)</h3>
+                    <span class="etiqueta-panel">
+                        ADMINISTRACIÓN
+                    </span>
 
-        <section style="display:flex;flex-direction:column;gap:10px;margin-top:10px;">
-            <label>Tipo de Reporte:</label>
+                    <h3>
+                        Gestión de usuarios
+                    </h3>
 
-            <select>
-                <option>Reporte de Actividad General</option>
-                <option>Historial de Alertas SOS</option>
-                <option>Métricas de Retención</option>
-            </select>
+                    <p>
+                        Administra las cuentas y accesos de los usuarios de Previnox.
+                    </p>
 
-            <section style="display:flex;gap:10px;">
-                <article style="flex:1">
-                    <label>Desde:</label>
-                    <input type="date">
+                </section>
+
+
+                <button
+                    type="button"
+                    class="btn-nuevo"
+                    id="nuevoUsuario">
+
+                    + Nuevo usuario
+
+                </button>
+
+            </header>
+
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <section class="estadisticas-usuarios">
+
+                <article class="estadistica">
+
+                    <span class="icono-estadistica">
+                        👥
+                    </span>
+
+                    <section>
+
+                        <strong id="totalUsuarios">
+                            6
+                        </strong>
+
+                        <p>
+                            Total usuarios
+                        </p>
+
+                    </section>
+
                 </article>
 
-                <article style="flex:1">
-                    <label>Hasta:</label>
-                    <input type="date">
+
+                <article class="estadistica">
+
+                    <span class="icono-estadistica">
+                        🟢
+                    </span>
+
+                    <section>
+
+                        <strong id="usuariosActivos">
+                            5
+                        </strong>
+
+                        <p>
+                            Usuarios activos
+                        </p>
+
+                    </section>
+
                 </article>
+
+
+                <article class="estadistica">
+
+                    <span class="icono-estadistica">
+                        🩺
+                    </span>
+
+                    <section>
+
+                        <strong>
+                            2
+                        </strong>
+
+                        <p>
+                            Profesionales
+                        </p>
+
+                    </section>
+
+                </article>
+
             </section>
 
-            <button class="config-btn" onclick="alert('Reporte generado correctamente con los filtros seleccionados.')">
-                📥 Generar y Descargar Reporte
-            </button>
-        </section>
-    </article>
-</section>
 
-<!-- ALERTAS -->
-<section id="alertas" class="dinamic-section">
-    <article class="panel" style="border-top:4px solid #dc2626;">
-        <h3 style="color:#dc2626">Monitorizar Alertas y SOS (RF-UN-003)</h3>
 
-        <ul class="list">
-            <li>
-                <span style="color:#dc2626">SOS - Luis Martinez (Impacto Alto)</span>
-                <select onchange="alert('Estado actualizado a: '+this.value)">
-                    <option>Pendiente</option>
-                    <option selected>En revisión</option>
-                    <option>Atendida</option>
-                    <option>Descartada</option>
-                    <option>Escalada</option>
+            <!-- BUSCADOR -->
+
+            <section class="herramientas-usuarios">
+
+                <input
+                    type="text"
+                    id="buscarUsuario"
+                    placeholder="🔍 Buscar por nombre o correo...">
+
+
+                <select id="filtroRol">
+
+                    <option value="todos">
+                        Todos los roles
+                    </option>
+
+                    <option value="Administrador">
+                        Administrador
+                    </option>
+
+                    <option value="Profesional">
+                        Profesional
+                    </option>
+
+                    <option value="Empleado">
+                        Empleado
+                    </option>
+
+                    <option value="Paciente">
+                        Paciente
+                    </option>
+
                 </select>
-            </li>
 
-            <li>
-                <span style="color:#dc2626">Inactividad - Sofia Ruiz (Impacto Medio)</span>
-                <select onchange="alert('Estado actualizado a: '+this.value)">
-                    <option selected>Pendiente</option>
-                    <option>En revisión</option>
-                    <option>Atendida</option>
-                    <option>Descartada</option>
-                    <option>Escalada</option>
+
+                <select id="filtroEstado">
+
+                    <option value="todos">
+                        Todos los estados
+                    </option>
+
+                    <option value="Activo">
+                        Activo
+                    </option>
+
+                    <option value="Inactivo">
+                        Inactivo
+                    </option>
+
                 </select>
-            </li>
-        </ul>
-    </article>
-</section>
 
-<!-- PROFESIONALES -->
-<section id="profesionales" class="dinamic-section">
-    <article class="panel">
-        <h3>Asignación de Profesionales (RF-NU-004)</h3>
+            </section>
 
-        <section style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
-            <label>Caso / Usuario a Asignar:</label>
 
-            <select>
-                <option>Caso #102 - María (Urgente)</option>
-                <option>Caso #105 - Carlos Perez</option>
-            </select>
 
-            <label>Seleccionar Profesional:</label>
+            <!-- TABLA -->
 
-            <select>
-                <option>Dr. Jean Gomez - Psicología (Disponible)</option>
-                <option>Dra. Elis Mántes - Medicina General (Disponible)</option>
-            </select>
+            <section class="tabla-contenedor">
 
-            <button class="btn-action" onclick="alert('Profesional asignado correctamente al caso. Notificación enviada.')">
-                Guardar Asignación
-            </button>
-        </section>
-    </article>
-</section>
+                <table class="tabla-usuarios">
 
-<!-- CONTENIDO -->
-<section id="contenido" class="dinamic-section">
-    <article class="panel">
-        <h3>Aprobar Contenido (RF-UN-005)</h3>
-        <p>Revisión y validación de información enviada por usuarios o redactores.</p>
+                    <thead>
 
-        <ul class="list">
-            <li>
-                <span>Artículo: "Consejos de autocuidado emocional"</span>
+                        <tr>
 
-                <section style="display:flex;gap:5px;">
-                    <button class="btn-action" style="background:#0d9488;" onclick="alert('Contenido aprobado y publicado visiblemente.')">Aprobar</button>
-                    <button class="btn-action" style="background:#dc2626;" onclick="alert('Contenido rechazado con observaciones.')">Rechazar</button>
+                            <th>
+                                USUARIO
+                            </th>
+
+                            <th>
+                                ROL
+                            </th>
+
+                            <th>
+                                ESTADO
+                            </th>
+
+                            <th>
+                                ÚLTIMA ACTIVIDAD
+                            </th>
+
+                            <th>
+                                ACCIONES
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaUsuarios">
+
+
+                        <!-- CARLOS -->
+
+                        <tr
+                            class="usuario"
+                            data-rol="Empleado"
+                            data-estado="Activo">
+
+                            <td>
+
+                                <section class="usuario-info">
+
+                                    <span class="avatar">
+                                        CP
+                                    </span>
+
+                                    <section>
+
+                                        <strong>
+                                            Carlos Perez
+                                        </strong>
+
+                                        <small>
+                                            carlos@previnox.com
+                                        </small>
+
+                                    </section>
+
+                                </section>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="rol empleado">
+                                    Empleado
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="estado activo">
+                                    ● Activo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                Ayer, 04:20 PM
+                            </td>
+
+
+                            <td>
+
+                                <section class="acciones">
+
+                                    <button
+                                        type="button"
+                                        class="accion editar">
+                                        ✏️
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion clave">
+                                        🔑
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion eliminar">
+                                        🗑️
+                                    </button>
+
+                                </section>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- JEAN -->
+
+                        <tr
+                            class="usuario"
+                            data-rol="Profesional"
+                            data-estado="Activo">
+
+                            <td>
+
+                                <section class="usuario-info">
+
+                                    <span class="avatar">
+                                        JG
+                                    </span>
+
+                                    <section>
+
+                                        <strong>
+                                            Jean Gomez
+                                        </strong>
+
+                                        <small>
+                                            jean@previnox.com
+                                        </small>
+
+                                    </section>
+
+                                </section>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="rol profesional">
+                                    Profesional
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="estado activo">
+                                    ● Activo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                Hoy, 09:15 AM
+                            </td>
+
+
+                            <td>
+
+                                <section class="acciones">
+
+                                    <button
+                                        type="button"
+                                        class="accion editar">
+                                        ✏️
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion clave">
+                                        🔑
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion eliminar">
+                                        🗑️
+                                    </button>
+
+                                </section>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- ELIS -->
+
+                        <tr
+                            class="usuario"
+                            data-rol="Administrador"
+                            data-estado="Activo">
+
+                            <td>
+
+                                <section class="usuario-info">
+
+                                    <span class="avatar">
+                                        EM
+                                    </span>
+
+                                    <section>
+
+                                        <strong>
+                                            Elis Mántes
+                                        </strong>
+
+                                        <small>
+                                            elis@previnox.com
+                                        </small>
+
+                                    </section>
+
+                                </section>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="rol administrador">
+                                    Administrador
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="estado activo">
+                                    ● Activo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                Hoy, 10:32 AM
+                            </td>
+
+
+                            <td>
+
+                                <section class="acciones">
+
+                                    <button
+                                        type="button"
+                                        class="accion editar">
+                                        ✏️
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion clave">
+                                        🔑
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion eliminar">
+                                        🗑️
+                                    </button>
+
+                                </section>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- MARIANA -->
+
+                        <tr
+                            class="usuario"
+                            data-rol="Paciente"
+                            data-estado="Activo">
+
+                            <td>
+
+                                <section class="usuario-info">
+
+                                    <span class="avatar">
+                                        MR
+                                    </span>
+
+                                    <section>
+
+                                        <strong>
+                                            Mariana Rodríguez
+                                        </strong>
+
+                                        <small>
+                                            mariana@gmail.com
+                                        </small>
+
+                                    </section>
+
+                                </section>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="rol paciente">
+                                    Paciente
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="estado activo">
+                                    ● Activo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                Hoy, 08:45 AM
+                            </td>
+
+
+                            <td>
+
+                                <section class="acciones">
+
+                                    <button
+                                        type="button"
+                                        class="accion editar">
+                                        ✏️
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion clave">
+                                        🔑
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion eliminar">
+                                        🗑️
+                                    </button>
+
+                                </section>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- SOFIA -->
+
+                        <tr
+                            class="usuario"
+                            data-rol="Profesional"
+                            data-estado="Activo">
+
+                            <td>
+
+                                <section class="usuario-info">
+
+                                    <span class="avatar">
+                                        SL
+                                    </span>
+
+                                    <section>
+
+                                        <strong>
+                                            Sofía López
+                                        </strong>
+
+                                        <small>
+                                            sofia@previnox.com
+                                        </small>
+
+                                    </section>
+
+                                </section>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="rol profesional">
+                                    Profesional
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="estado activo">
+                                    ● Activo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                18 Ago, 02:10 PM
+                            </td>
+
+
+                            <td>
+
+                                <section class="acciones">
+
+                                    <button
+                                        type="button"
+                                        class="accion editar">
+                                        ✏️
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion clave">
+                                        🔑
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion eliminar">
+                                        🗑️
+                                    </button>
+
+                                </section>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- DANIEL -->
+
+                        <tr
+                            class="usuario"
+                            data-rol="Paciente"
+                            data-estado="Inactivo">
+
+                            <td>
+
+                                <section class="usuario-info">
+
+                                    <span class="avatar">
+                                        DA
+                                    </span>
+
+                                    <section>
+
+                                        <strong>
+                                            Daniel Andrade
+                                        </strong>
+
+                                        <small>
+                                            daniel@gmail.com
+                                        </small>
+
+                                    </section>
+
+                                </section>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="rol paciente">
+                                    Paciente
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="estado inactivo">
+                                    ● Inactivo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                10 Ago, 11:30 AM
+                            </td>
+
+
+                            <td>
+
+                                <section class="acciones">
+
+                                    <button
+                                        type="button"
+                                        class="accion editar">
+                                        ✏️
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion clave">
+                                        🔑
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="accion eliminar">
+                                        🗑️
+                                    </button>
+
+                                </section>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         REPORTES
+    ================================================== -->
+
+    <section
+        id="reportes"
+        class="dinamic-section">
+
+        <article class="panel reportes-panel">
+
+            <section class="reportes-titulo">
+
+                <section>
+
+                    <span class="etiqueta-panel">
+                        ADMINISTRACIÓN
+                    </span>
+
+                    <h3>
+                        Reportes y estadísticas
+                    </h3>
+
+                    <p>
+                        Consulta el rendimiento, atención y actividad de Previnox.
+                    </p>
+
                 </section>
-            </li>
-        </ul>
-    </article>
-</section>
 
-<!-- CAMPAÑAS -->
-<section id="campañas" class="dinamic-section">
-    <article class="panel">
-        <h3>Publicar Campañas (RF-NU-006)</h3>
 
-        <section style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
-            <input type="text" placeholder="Título de la campaña">
+                <span class="icono-reportes">
+                    📊
+                </span>
 
-            <textarea placeholder="Contenido descriptivo de la campaña..." rows="3"></textarea>
+            </section>
 
-            <label>Material Multimedia (Imagen/Video):</label>
 
-            <input type="file">
 
-            <button class="btn-action" onclick="alert('¡Campaña publicada con éxito! Su estado cambió a publicada.')">
-                Publicar Campaña
+            <!-- INDICADORES -->
+
+            <section class="indicadores-reportes">
+
+                <article class="indicador">
+
+                    <span>👥</span>
+
+                    <section>
+
+                        <strong>
+                            1,250
+                        </strong>
+
+                        <p>
+                            Pacientes registrados
+                        </p>
+
+                    </section>
+
+                </article>
+
+
+                <article class="indicador">
+
+                    <span>📅</span>
+
+                    <section>
+
+                        <strong>
+                            386
+                        </strong>
+
+                        <p>
+                            Atenciones este mes
+                        </p>
+
+                    </section>
+
+                </article>
+
+
+                <article class="indicador">
+
+                    <span>🩺</span>
+
+                    <section>
+
+                        <strong>
+                            12
+                        </strong>
+
+                        <p>
+                            Profesionales activos
+                        </p>
+
+                    </section>
+
+                </article>
+
+
+                <article class="indicador alerta">
+
+                    <span>⚠️</span>
+
+                    <section>
+
+                        <strong>
+                            18
+                        </strong>
+
+                        <p>
+                            Alertas pendientes
+                        </p>
+
+                    </section>
+
+                </article>
+
+            </section>
+
+
+
+            <!-- GENERADOR -->
+
+            <article class="generador-reporte">
+
+                <h4>
+                    Generar nuevo reporte
+                </h4>
+
+                <p class="descripcion-reporte">
+
+                    Selecciona la información que deseas consultar y establece
+                    el período del reporte.
+
+                </p>
+
+
+                <section class="form-reporte">
+
+                    <section>
+
+                        <label>
+                            Tipo de reporte
+                        </label>
+
+                        <select id="tipoReporte">
+
+                            <option value="general">
+                                📊 Resumen general de la clínica
+                            </option>
+
+                            <option value="pacientes">
+                                👥 Pacientes y atenciones
+                            </option>
+
+                            <option value="citas">
+                                📅 Citas y asistencia
+                            </option>
+
+                            <option value="profesionales">
+                                🩺 Actividad de profesionales
+                            </option>
+
+                            <option value="alertas">
+                                🚨 Alertas y casos SOS
+                            </option>
+
+                            <option value="rendimiento">
+                                📈 Rendimiento del servicio
+                            </option>
+
+                        </select>
+
+                    </section>
+
+
+                    <section>
+
+                        <label>
+                            Fecha inicial
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fechaInicio">
+
+                    </section>
+
+
+                    <section>
+
+                        <label>
+                            Fecha final
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fechaFin">
+
+                    </section>
+
+                </section>
+
+
+                <button
+                    class="btn-generar-reporte"
+                    onclick="generarReporte()">
+
+                    📥 Generar reporte
+
+                </button>
+
+            </article>
+
+
+
+            <!-- RESULTADO -->
+
+            <article
+                class="resultado-reporte"
+                id="resultadoReporte">
+
+                <section class="resultado-header">
+
+                    <section>
+
+                        <span class="etiqueta-panel">
+                            REPORTE GENERADO
+                        </span>
+
+                        <h4 id="tituloReporte">
+                            Resumen general de la clínica
+                        </h4>
+
+                    </section>
+
+
+                    <span class="estado-reporte">
+                        ✓ Disponible
+                    </span>
+
+                </section>
+
+
+
+                <section class="datos-reporte">
+
+                    <article>
+
+                        <strong>
+                            386
+                        </strong>
+
+                        <span>
+                            Atenciones
+                        </span>
+
+                    </article>
+
+
+                    <article>
+
+                        <strong>
+                            342
+                        </strong>
+
+                        <span>
+                            Citas completadas
+                        </span>
+
+                    </article>
+
+
+                    <article>
+
+                        <strong>
+                            28
+                        </strong>
+
+                        <span>
+                            Citas canceladas
+                        </span>
+
+                    </article>
+
+
+                    <article>
+
+                        <strong>
+                            16
+                        </strong>
+
+                        <span>
+                            No asistieron
+                        </span>
+
+                    </article>
+
+                </section>
+
+
+
+                <section class="acciones-reporte">
+
+                    <p>
+
+                        Período:
+
+                        <strong id="periodoReporte">
+                            Último mes
+                        </strong>
+
+                    </p>
+
+
+                    <button
+                        class="btn-descargar"
+                        onclick="descargarReporte()">
+
+                        📄 Descargar reporte
+
+                    </button>
+
+                </section>
+
+            </article>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         ALERTAS Y SOS
+    ================================================== -->
+
+    <section
+        id="alertas"
+        class="dinamic-section">
+
+        <article class="panel alertas-panel">
+
+            <header class="alertas-header">
+
+                <section>
+
+                    <span class="etiqueta-panel">
+                        MONITOREO DE SEGURIDAD
+                    </span>
+
+                    <h3>
+                        Alertas y casos SOS
+                    </h3>
+
+                    <p>
+                        Supervisa situaciones que requieren atención
+                        y realiza seguimiento a los usuarios.
+                    </p>
+
+                </section>
+
+
+                <span class="icono-alertas">
+                    🚨
+                </span>
+
+            </header>
+
+
+
+            <!-- RESUMEN -->
+
+            <section class="resumen-alertas">
+
+                <article class="alerta-resumen critica">
+
+                    <span>
+                        🚨
+                    </span>
+
+                    <section>
+
+                        <strong id="alertasCriticas">
+                            1
+                        </strong>
+
+                        <p>
+                            Críticas
+                        </p>
+
+                    </section>
+
+                </article>
+
+
+                <article class="alerta-resumen media">
+
+                    <span>
+                        ⚠️
+                    </span>
+
+                    <section>
+
+                        <strong id="alertasMedias">
+                            1
+                        </strong>
+
+                        <p>
+                            Impacto medio
+                        </p>
+
+                    </section>
+
+                </article>
+
+
+                <article class="alerta-resumen revision">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <section>
+
+                        <strong id="alertasRevision">
+                            1
+                        </strong>
+
+                        <p>
+                            En revisión
+                        </p>
+
+                    </section>
+
+                </article>
+
+
+                <article class="alerta-resumen atendida">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    <section>
+
+                        <strong id="alertasAtendidas">
+                            0
+                        </strong>
+
+                        <p>
+                            Atendidas
+                        </p>
+
+                    </section>
+
+                </article>
+
+            </section>
+
+
+
+            <!-- HERRAMIENTAS -->
+
+            <section class="herramientas-alertas">
+
+                <input
+                    type="text"
+                    id="buscarAlerta"
+                    placeholder="🔍 Buscar usuario o tipo de alerta...">
+
+
+                <select id="filtroAlerta">
+
+                    <option value="todas">
+                        Todos los estados
+                    </option>
+
+                    <option value="Pendiente">
+                        Pendientes
+                    </option>
+
+                    <option value="En revisión">
+                        En revisión
+                    </option>
+
+                    <option value="Atendida">
+                        Atendidas
+                    </option>
+
+                    <option value="Escalada">
+                        Escaladas
+                    </option>
+
+                </select>
+
+            </section>
+
+
+
+            <!-- LISTA DE ALERTAS -->
+
+            <section class="lista-alertas">
+
+
+                <!-- ALERTA CRÍTICA -->
+
+                <article
+                    class="alerta-card critica"
+                    data-estado="En revisión"
+                    data-texto="Luis Martinez SOS">
+
+                    <header class="alerta-card-header">
+
+                        <section class="alerta-identidad">
+
+                            <span class="alerta-icono">
+                                🚨
+                            </span>
+
+                            <section>
+
+                                <strong>
+                                    SOS - Luis Martinez
+                                </strong>
+
+                                <small>
+                                    Caso #102 · Detectado hoy, 10:42 AM
+                                </small>
+
+                            </section>
+
+                        </section>
+
+
+                        <span class="nivel-impacto alto">
+                            IMPACTO ALTO
+                        </span>
+
+                    </header>
+
+
+
+                    <section class="alerta-info">
+
+                        <article>
+
+                            <span>
+                                👤
+                            </span>
+
+                            <section>
+
+                                <small>
+                                    Usuario
+                                </small>
+
+                                <strong>
+                                    Luis Martinez
+                                </strong>
+
+                            </section>
+
+                        </article>
+
+
+                        <article>
+
+                            <span>
+                                🕐
+                            </span>
+
+                            <section>
+
+                                <small>
+                                    Detectada
+                                </small>
+
+                                <strong>
+                                    10:42 AM
+                                </strong>
+
+                            </section>
+
+                        </article>
+
+
+                        <article>
+
+                            <span>
+                                📋
+                            </span>
+
+                            <section>
+
+                                <small>
+                                    Tipo
+                                </small>
+
+                                <strong>
+                                    SOS
+                                </strong>
+
+                            </section>
+
+                        </article>
+
+                    </section>
+
+
+
+                    <footer class="alerta-card-footer">
+
+                        <select
+                            class="estado-alerta"
+                            onchange="actualizarAlerta(this)">
+
+                            <option>
+                                Pendiente
+                            </option>
+
+                            <option selected>
+                                En revisión
+                            </option>
+
+                            <option>
+                                Atendida
+                            </option>
+
+                            <option>
+                                Escalada
+                            </option>
+
+                        </select>
+
+
+                        <section class="acciones-alerta">
+
+                            <button
+                                class="btn-ver"
+                                onclick="verCaso('Luis Martinez')">
+
+                                Ver caso
+
+                            </button>
+
+
+                            <button
+                                class="btn-atender"
+                                onclick="atenderAlerta(this)">
+
+                                ✓ Atender
+
+                            </button>
+
+                        </section>
+
+                    </footer>
+
+                </article>
+
+
+
+                <!-- ALERTA MEDIA -->
+
+                <article
+                    class="alerta-card media"
+                    data-estado="Pendiente"
+                    data-texto="Sofia Ruiz Inactividad">
+
+                    <header class="alerta-card-header">
+
+                        <section class="alerta-identidad">
+
+                            <span class="alerta-icono">
+                                ⚠️
+                            </span>
+
+                            <section>
+
+                                <strong>
+                                    Inactividad - Sofia Ruiz
+                                </strong>
+
+                                <small>
+                                    Caso #105 · Detectado hoy, 08:15 AM
+                                </small>
+
+                            </section>
+
+                        </section>
+
+
+                        <span class="nivel-impacto medio">
+                            IMPACTO MEDIO
+                        </span>
+
+                    </header>
+
+
+
+                    <section class="alerta-info">
+
+                        <article>
+
+                            <span>
+                                👤
+                            </span>
+
+                            <section>
+
+                                <small>
+                                    Usuario
+                                </small>
+
+                                <strong>
+                                    Sofia Ruiz
+                                </strong>
+
+                            </section>
+
+                        </article>
+
+
+                        <article>
+
+                            <span>
+                                🕐
+                            </span>
+
+                            <section>
+
+                                <small>
+                                    Detectada
+                                </small>
+
+                                <strong>
+                                    08:15 AM
+                                </strong>
+
+                            </section>
+
+                        </article>
+
+
+                        <article>
+
+                            <span>
+                                📋
+                            </span>
+
+                            <section>
+
+                                <small>
+                                    Tipo
+                                </small>
+
+                                <strong>
+                                    Inactividad
+                                </strong>
+
+                            </section>
+
+                        </article>
+
+                    </section>
+
+
+
+                    <footer class="alerta-card-footer">
+
+                        <select
+                            class="estado-alerta"
+                            onchange="actualizarAlerta(this)">
+
+                            <option selected>
+                                Pendiente
+                            </option>
+
+                            <option>
+                                En revisión
+                            </option>
+
+                            <option>
+                                Atendida
+                            </option>
+
+                            <option>
+                                Escalada
+                            </option>
+
+                        </select>
+
+
+                        <section class="acciones-alerta">
+
+                            <button
+                                class="btn-ver"
+                                onclick="verCaso('Sofia Ruiz')">
+
+                                Ver caso
+
+                            </button>
+
+
+                            <button
+                                class="btn-atender"
+                                onclick="atenderAlerta(this)">
+
+                                ✓ Atender
+
+                            </button>
+
+                        </section>
+
+                    </footer>
+
+                </article>
+
+            </section>
+
+
+
+            <footer class="alertas-footer">
+
+                <span>
+                    🔐 Sistema de monitoreo activo
+                </span>
+
+                <span>
+                    Última actualización: hace 2 minutos
+                </span>
+
+            </footer>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         ASIGNAR PROFESIONALES
+    ================================================== -->
+
+    <section
+        id="profesionales"
+        class="dinamic-section">
+
+
+        <!-- ENCABEZADO -->
+
+        <header class="section-header">
+
+            <section>
+
+                <p class="section-label">
+                    GESTIÓN DE ATENCIÓN
+                </p>
+
+                <h1>
+                    Asignación de Profesionales
+                </h1>
+
+                <p>
+                    Administra y asigna profesionales a los usuarios
+                    que requieren atención.
+                </p>
+
+            </section>
+
+
+            <button
+                class="btn-report"
+                type="button"
+                onclick="generarReporteAsignaciones()">
+
+                <span>
+                    📄
+                </span>
+
+                Generar reporte
+
             </button>
+
+        </header>
+
+
+
+        <!-- CONTENEDOR -->
+
+        <section class="assignment-container">
+
+
+            <!-- INFORMACIÓN DEL CASO -->
+
+            <article class="case-card">
+
+                <header class="case-header">
+
+                    <section>
+
+                        <span class="case-tag urgent">
+                            URGENTE
+                        </span>
+
+                        <h2>
+                            Caso #102
+                        </h2>
+
+                        <p>
+                            Usuario pendiente de asignación
+                        </p>
+
+                    </section>
+
+
+                    <strong class="case-status">
+                        Pendiente
+                    </strong>
+
+                </header>
+
+
+
+                <section class="patient-information">
+
+
+                    <article class="patient-profile">
+
+                        <span class="patient-avatar">
+                            MG
+                        </span>
+
+                        <section>
+
+                            <h3>
+                                María González
+                            </h3>
+
+                            <p>
+                                Usuario registrado
+                            </p>
+
+                        </section>
+
+                    </article>
+
+
+
+                    <article class="information-item">
+
+                        <span>
+                            🧠
+                        </span>
+
+                        <section>
+
+                            <small>
+                                Motivo de atención
+                            </small>
+
+                            <strong>
+                                Ansiedad / crisis emocional
+                            </strong>
+
+                        </section>
+
+                    </article>
+
+
+
+                    <article class="information-item">
+
+                        <span>
+                            🚨
+                        </span>
+
+                        <section>
+
+                            <small>
+                                Nivel de prioridad
+                            </small>
+
+                            <strong class="priority-text">
+                                Alta - Requiere atención
+                            </strong>
+
+                        </section>
+
+                    </article>
+
+
+
+                    <article class="information-item">
+
+                        <span>
+                            🕐
+                        </span>
+
+                        <section>
+
+                            <small>
+                                Solicitud recibida
+                            </small>
+
+                            <strong>
+                                28 de agosto, 2026
+                            </strong>
+
+                        </section>
+
+                    </article>
+
+                </section>
+
+            </article>
+
+
+
+            <!-- ASIGNACIÓN -->
+
+            <article class="assignment-card">
+
+                <header class="card-title">
+
+                    <section>
+
+                        <span class="title-icon">
+                            🩺
+                        </span>
+
+                        <section>
+
+                            <h2>
+                                Asignar profesional
+                            </h2>
+
+                            <p>
+                                Selecciona el profesional adecuado para este caso.
+                            </p>
+
+                        </section>
+
+                    </section>
+
+                </header>
+
+
+
+                <form id="assignmentForm">
+
+                    <label for="professional">
+                        Profesional responsable
+                    </label>
+
+
+                    <select
+                        id="professional"
+                        required>
+
+                        <option value="">
+                            Seleccionar profesional
+                        </option>
+
+                        <option value="Jean Gomez">
+                            🟢 Dr. Jean Gomez — Psicología · Disponible
+                        </option>
+
+                        <option value="Laura Martinez">
+                            🟢 Dra. Laura Martínez — Psicología · Disponible
+                        </option>
+
+                        <option value="Carlos Ruiz">
+                            🟡 Dr. Carlos Ruiz — Psiquiatría · Ocupado
+                        </option>
+
+                        <option value="Ana Torres">
+                            🟢 Dra. Ana Torres — Psicología · Disponible
+                        </option>
+
+                    </select>
+
+
+
+                    <section
+                        id="professionalInfo"
+                        class="professional-info">
+
+                        <span class="professional-avatar">
+                            JG
+                        </span>
+
+                        <section>
+
+                            <strong id="professionalName">
+                                Dr. Jean Gomez
+                            </strong>
+
+                            <p id="professionalSpecialty">
+                                Psicología clínica
+                            </p>
+
+                            <span class="availability">
+
+                                <i></i>
+
+                                Disponible para atender
+
+                            </span>
+
+                        </section>
+
+                    </section>
+
+
+
+                    <section class="assignment-warning">
+
+                        <span>
+                            ℹ️
+                        </span>
+
+                        <p>
+
+                            Al confirmar la asignación, el profesional
+                            recibirá una notificación con la información
+                            del caso.
+
+                        </p>
+
+                    </section>
+
+
+
+                    <button
+                        class="btn-assignment"
+                        type="submit">
+
+                        <span>
+                            ✓
+                        </span>
+
+                        Confirmar asignación
+
+                    </button>
+
+                </form>
+
+            </article>
+
+
+
+            <!-- HISTORIAL -->
+
+            <article class="history-card">
+
+                <header class="history-header">
+
+                    <section>
+
+                        <h2>
+                            Asignaciones recientes
+                        </h2>
+
+                        <p>
+                            Últimos casos gestionados por el administrador.
+                        </p>
+
+                    </section>
+
+
+                    <button
+                        type="button"
+                        class="view-all">
+
+                        Ver historial
+
+                    </button>
+
+                </header>
+
+
+
+                <section class="history-list">
+
+
+                    <article class="history-item">
+
+                        <span class="history-avatar">
+                            MP
+                        </span>
+
+                        <section>
+
+                            <strong>
+                                María Pérez
+                            </strong>
+
+                            <p>
+                                Caso #101 · Psicología
+                            </p>
+
+                        </section>
+
+
+                        <span class="history-professional">
+                            Dra. Laura Martínez
+                        </span>
+
+
+                        <span class="history-date">
+                            Hoy, 10:32 AM
+                        </span>
+
+
+                        <span class="history-success">
+                            ✓ Asignado
+                        </span>
+
+                    </article>
+
+
+
+                    <article class="history-item">
+
+                        <span class="history-avatar">
+                            JL
+                        </span>
+
+                        <section>
+
+                            <strong>
+                                Juan López
+                            </strong>
+
+                            <p>
+                                Caso #100 · Psicología
+                            </p>
+
+                        </section>
+
+
+                        <span class="history-professional">
+                            Dr. Jean Gomez
+                        </span>
+
+
+                        <span class="history-date">
+                            Hoy, 09:15 AM
+                        </span>
+
+
+                        <span class="history-success">
+                            ✓ Asignado
+                        </span>
+
+                    </article>
+
+
+
+                    <article class="history-item">
+
+                        <span class="history-avatar">
+                            SC
+                        </span>
+
+                        <section>
+
+                            <strong>
+                                Sofía Castro
+                            </strong>
+
+                            <p>
+                                Caso #099 · Psiquiatría
+                            </p>
+
+                        </section>
+
+
+                        <span class="history-professional">
+                            Dr. Carlos Ruiz
+                        </span>
+
+
+                        <span class="history-date">
+                            Ayer, 04:40 PM
+                        </span>
+
+
+                        <span class="history-success">
+                            ✓ Asignado
+                        </span>
+
+                    </article>
+
+                </section>
+
+            </article>
+
         </section>
-    </article>
+
+    </section>
+
+
+
+ <section id="contenido" class="dinamic-section">
+    <header class="content-heading">
+        <section>
+            <p class="eyebrow">REVISIÓN EDITORIAL</p>
+            <h3>Aprobar contenido</h3>
+            <p>Revisa y gestiona el contenido antes de publicarlo.</p>
+        </section>
+
+        <p class="pending-count">
+            <strong id="contadorPendientes">3</strong> pendientes
+        </p>
+    </header>
+
+    <section class="content-tools">
+        <input
+            id="buscarContenido"
+            type="search"
+            placeholder="Buscar por título, autor o tipo">
+
+        <select id="filtroContenido">
+            <option value="todos">Todos los tipos</option>
+            <option value="Artículo">Artículos</option>
+            <option value="Video">Videos</option>
+            <option value="Guía">Guías</option>
+        </select>
+    </section>
+
+    <p id="sinResultados" class="empty-state" hidden>
+        No hay contenido pendiente que coincida con la búsqueda.
+    </p>
+
+    <section id="listaContenido" class="content-grid">
+
+        <article
+            class="content-card"
+            data-tipo="Artículo"
+            data-titulo="Consejos de autocuidado emocional"
+            data-autor="Equipo Previnox"
+            data-fecha="30 de agosto de 2026"
+            data-categoria="Bienestar emocional"
+            data-cuerpo="Consejos prácticos para fortalecer el bienestar emocional, identificar señales de estrés y construir hábitos saludables.">
+
+            <header>
+                <p class="content-type">Artículo</p>
+                <span class="status pending">Pendiente</span>
+                <h3>Consejos de autocuidado emocional</h3>
+            </header>
+
+            <p>
+                Consejos prácticos para fortalecer el bienestar emocional y promover hábitos saludables.
+            </p>
+
+            <dl>
+                <dt>Autor</dt>
+                <dd>Equipo Previnox</dd>
+
+                <dt>Fecha</dt>
+                <dd>30 de agosto de 2026</dd>
+            </dl>
+
+            <footer>
+                <button class="secondary ver-contenido" type="button">
+                    Ver contenido
+                </button>
+
+                <button class="approve" type="button">
+                    Aprobar
+                </button>
+
+                <button class="reject" type="button">
+                    Rechazar
+                </button>
+            </footer>
+        </article>
+
+        <article
+            class="content-card"
+            data-tipo="Video"
+            data-titulo="Respiración consciente en 3 minutos"
+            data-autor="Dra. Laura Méndez"
+            data-fecha="29 de agosto de 2026"
+            data-categoria="Salud mental"
+            data-cuerpo="Video breve con una técnica de respiración guiada para usar durante momentos de tensión.">
+
+            <header>
+                <p class="content-type">Video</p>
+                <span class="status pending">Pendiente</span>
+                <h3>Respiración consciente en 3 minutos</h3>
+            </header>
+
+            <p>
+                Una técnica breve para recuperar la calma en momentos de tensión.
+            </p>
+
+            <dl>
+                <dt>Autor</dt>
+                <dd>Dra. Laura Méndez</dd>
+
+                <dt>Fecha</dt>
+                <dd>29 de agosto de 2026</dd>
+            </dl>
+
+            <footer>
+                <button class="secondary ver-contenido" type="button">
+                    Ver contenido
+                </button>
+
+                <button class="approve" type="button">
+                    Aprobar
+                </button>
+
+                <button class="reject" type="button">
+                    Rechazar
+                </button>
+            </footer>
+        </article>
+
+        <article
+            class="content-card"
+            data-tipo="Guía"
+            data-titulo="Guía para una pausa activa saludable"
+            data-autor="Bienestar Previnox"
+            data-fecha="28 de agosto de 2026"
+            data-categoria="Hábitos saludables"
+            data-cuerpo="Guía de ejercicios y recomendaciones para realizar pausas activas durante la jornada.">
+
+            <header>
+                <p class="content-type">Guía</p>
+                <span class="status pending">Pendiente</span>
+                <h3>Guía para una pausa activa saludable</h3>
+            </header>
+
+            <p>
+                Ejercicios sencillos para incorporar bienestar durante la jornada.
+            </p>
+
+            <dl>
+                <dt>Autor</dt>
+                <dd>Bienestar Previnox</dd>
+
+                <dt>Fecha</dt>
+                <dd>28 de agosto de 2026</dd>
+            </dl>
+
+            <footer>
+                <button class="secondary ver-contenido" type="button">
+                    Ver contenido
+                </button>
+
+                <button class="approve" type="button">
+                    Aprobar
+                </button>
+
+                <button class="reject" type="button">
+                    Rechazar
+                </button>
+            </footer>
+        </article>
+
+    </section>
 </section>
-<footer>
-    <p>Previnox 2026</p>
-</footer>
+
+    <!-- ==================================================
+CAMPAÑAS
+    ================================================== -->
+
+  <section id="campañas" class="dinamic-section">
+    <header class="campaign-heading">
+        <section>
+            <p class="eyebrow">COMUNICACIÓN</p>
+            <h3>Publicar campañas</h3>
+            <p>Crea campañas informativas para los usuarios de Previnox.</p>
+        </section>
+
+        <p class="campaign-label"></p>
+    </header>
+
+    <section class="campaign-layout">
+
+        <article class="campaign-panel">
+            <header>
+                <h3>Nueva campaña</h3>
+                <p>Completa la información antes de publicarla.</p>
+            </header>
+
+            <form id="formCampaña">
+                <label for="tituloCampaña">
+                    Título de la campaña
+                </label>
+
+                <input
+                    id="tituloCampaña"
+                    type="text"
+                    maxlength="80"
+                    required
+                    placeholder="Ej. Semana del bienestar emocional">
+
+                <label for="descripcionCampaña">
+                    Descripción
+                </label>
+
+                <textarea
+                    id="descripcionCampaña"
+                    rows="6"
+                    maxlength="500"
+                    required
+                    placeholder="Escribe el mensaje que verán los usuarios..."></textarea>
+
+                <section class="campaign-options">
+                    <label for="categoriaCampaña">
+                        Categoría
+                    </label>
+
+                    <select id="categoriaCampaña">
+                        <option value="Bienestar">Bienestar</option>
+                        <option value="Prevención">Prevención</option>
+                        <option value="Salud mental">Salud mental</option>
+                        <option value="Hábitos saludables">Hábitos saludables</option>
+                    </select>
+
+                    <label for="fechaCampaña">
+                        Fecha de publicación
+                    </label>
+
+                    <input id="fechaCampaña" type="date" required>
+                </section>
+
+                <label class="upload-area" for="archivoCampaña">
+                    <span class="upload-icon">↑</span>
+                    <strong>Adjuntar imagen o video</strong>
+                    <small>PNG, JPG, WEBP o MP4 · Máximo 10 MB</small>
+                    <span class="file-name" id="nombreArchivo">
+                        No se ha seleccionado ningún archivo
+                    </span>
+                </label>
+
+                <input
+                    id="archivoCampaña"
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp,video/mp4"
+                    hidden>
+
+                <footer class="campaign-actions">
+                    <button type="reset" class="secondary" id="limpiarCampaña">
+                        Limpiar
+                    </button>
+
+                    <button type="submit" class="publish-campaign">
+                        Publicar campaña
+                    </button>
+                </footer>
+            </form>
+        </article>
+
+        <article class="campaign-preview">
+            <header>
+                <p class="eyebrow">VISTA PREVIA</p>
+                <h3>Así se verá la campaña</h3>
+            </header>
+
+            <section class="preview-card">
+                <span id="previewCategoria" class="preview-category">
+                    Bienestar
+                </span>
+
+                <h4 id="previewTitulo">
+                    Título de la campaña
+                </h4>
+
+                <p id="previewDescripcion">
+                    La descripción de tu campaña aparecerá aquí.
+                </p>
+
+                <figure id="previewMultimedia" hidden>
+                    <img id="imagenPreview" alt="Vista previa del archivo seleccionado">
+                    <video id="videoPreview" controls hidden></video>
+                </figure>
+
+                <footer>
+                    <small id="previewFecha">Publicación pendiente</small>
+                </footer>
+            </section>
+        </article>
+
+    </section>
+
+    <section class="published-campaigns">
+        <header>
+            <section>
+                <p class="eyebrow">HISTORIAL</p>
+                <h3>Campañas publicadas</h3>
+            </section>
+
+            <p id="contadorCampañas" class="campaign-label">0 publicadas</p>
+        </header>
+
+        <section id="listaCampañas" class="campaign-list">
+            <p id="sinCampañas" class="empty-state">
+                Aún no hay campañas publicadas.
+            </p>
+        </section>
+    </section>
+</section>
+    <footer>
+        <p>
+            Previnox 2026
+        </p>
+    </footer>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/dashboard.js"></script>
 </body>
+
 </html>

@@ -39,13 +39,63 @@
   </div>
 
 </header>
+ 
 
 
 
+ <section class="contacto">
+    <h2>Contáctanos</h2>
+    <p>Tu salud es nuestra prioridad. Escríbenos y te responderemos pronto.</p>
 
+    <!-- Información de contacto -->
+    <div class="info-contacto">
+      <div class="info-box">
+        <strong>Teléfono</strong>
+        +57 123 456 7890
+      </div>
+      <div class="info-box">
+        <strong>Correo</strong>
+        contacto@previnox.com
+      </div>
+      <div class="info-box">
+        <strong>Dirección</strong>
+        Calle 10 #20-30, Popayán
+      </div>
+      <div class="info-box">
+        <strong>Horario</strong>
+        Lunes a Viernes, 8 AM – 5 PM
+      </div>
+    </div>
 
+    <!-- Formulario -->
+    <form class="form-contacto" id="formContacto">
+      <div>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
 
+      <div>
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" name="correo" required>
+      </div>
 
+      <div>
+        <label for="asunto">Asunto</label>
+        <input type="text" id="asunto" name="asunto" required>
+      </div>
+
+      <div>
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div class="mensaje-exito" id="mensajeExito">
+      ✅ ¡Tu mensaje ha sido enviado con éxito!
+    </div>
+  </section>
 
 
 
@@ -68,7 +118,7 @@
         <div class="footer-links">
             <h3>Enlaces</h3>
 
-            <a href="#">Inicio</a>
+            <a href="index.html">Inicio</a>
             <a href="sobre-nosotros.html">Sobre nosotros</a>
             <a href="conoce-mas.html">Conoce más</a>
             <a href="contactanos.html">Contacto</a>
@@ -89,6 +139,7 @@
     </div>
 
 </footer>
+<script src="Js/contactanos.js"></script>
 </body>
 </html>
 

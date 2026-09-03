@@ -108,6 +108,51 @@ body{
 .boton-login:hover {
   transform: scale(1.05);
 }
+/*Secciones*/
+.conoce-mas {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f9f9f9;
+}
+
+.conoce-mas h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.item {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 220px;
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-10px);
+}
+
+.item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.item p {
+  padding: 15px;
+  font-size: 0.95em;
+  color: #555;
+}
+
 /*FOOTER*/
 .footer{
     background: #0d1b3e;

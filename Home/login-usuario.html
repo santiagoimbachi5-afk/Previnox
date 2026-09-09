@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previnox - Login Paciente</title>
+  <!-- Conexión al CSS externo -->
+  <link rel="stylesheet" href="CSS/login-usuario.css">
+</head>
+<body>
+
+<article class="card">
+  <h1>Acceso Paciente</h1>
+  <p>Ingresa tus credenciales de usuario</p>
+
+  <form onsubmit="ingresar(event)">
+    <label>Correo electrónico
+      <input type="email" placeholder="paciente@correo.com" required>
+    </label>
+    <label>Contraseña
+      <input type="password" placeholder="••••" required>
+    </label>
+    <button type="submit" class="btn-submit">Iniciar Sesión</button>
+  </form>
+
+  
+  <button class="btn-register" onclick="window.location.href='registro.html'">Regístrate</button>
+
+  <button class="btn-back" onclick="window.location.href='index.html'">← Volver</button>
+</article>
+
+<script src="Js/login-usuario.js"></script>
+
+</body>
+</html>

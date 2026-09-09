@@ -1,0 +1,333 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+aside h2{
+  font-family: 'Lobster Two', cursive;
+  color: #ffffff;
+  padding: 2px;
+  font-size: 40px;
+  margin-top: 5px;
+}
+aside p{
+  color: rgb(139, 238, 73);
+  font-size: 12px;
+  margin-top: -10px;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  background-color: #059669;
+  color: white;
+  width: 250px;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 5px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar li:hover {
+  background-color: #313131;
+  border-radius: 5px;
+}
+
+.logout {
+  margin-top: 20px;
+  background-color: #213db8;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 90px;
+}
+
+.contenido {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.seccion {
+  display: none;
+}
+
+.seccion.activa {
+  display: block;
+}
+/* */
+.card-paciente {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+.card-paciente p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.btn-entidades {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-entidades:hover {
+  background-color: #005bb5;
+}
+
+.entidades {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.oculto {
+  display: none;
+}
+.calendario {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.calendario input {
+  margin: 5px;
+  padding: 8px;
+}
+
+.calendario button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calendario button:hover {
+  background-color: #005bb5;
+}
+
+.btn-auto {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.btn-auto:hover {
+  background-color: #1e8449;
+}
+
+.lista-citas {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
+/* Atender emergencia*/
+.btn-emergencia {
+  background-color: #e74c3c; /* rojo destacado */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.btn-emergencia:hover {
+  background-color: #c0392b;
+}
+
+.alertas {
+  background: #fff3f3;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.alertas h4 {
+  color: #c0392b;
+}
+
+.alertas ul {
+  list-style: none;
+  padding: 0;
+}
+
+.alertas li {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Colores según prioridad */
+.alertas li.alta {
+  background: #fdecea;
+  border-left: 6px solid #e74c3c;
+}
+
+.alertas li.media {
+  background: #fff8e1;
+  border-left: 6px solid #f39c12;
+}
+
+.alertas li.baja {
+  background: #e8f5e9;
+  border-left: 6px solid #27ae60;
+}
+/*Panel de reportes */
+.panel-reportes {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabla-reportes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.tabla-reportes th, .tabla-reportes td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.tabla-reportes th {
+  background-color: #0a74da;
+  color: white;
+}
+
+.acciones-reportes button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.acciones-reportes button:hover {
+  background-color: #005bb5;
+}
+/* Solicitudes de Usuario*/
+.bandeja-solicitudes {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.bandeja-solicitudes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bandeja-solicitudes li {
+  margin: 8px 0;
+  padding: 10px;
+  background: #ffffff;
+  border-left: 5px solid #0a74da;
+  border-radius: 5px;
+}
+
+.acciones-solicitudes button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.acciones-solicitudes button:hover {
+  background-color: #005bb5;
+}
+/* Gestionar planes de tratamineto */ 
+.lista-planes {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.lista-planes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-planes li {
+  margin: 10px 0;
+  padding: 12px;
+  background: #ffffff;
+  border-left: 5px solid #0a74da;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.acciones-plan {
+  margin-top: 8px;
+}
+
+.acciones-plan button {
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.acciones-plan button:hover {
+  background-color: #005bb5;
+}
+
+footer {
+  text-align: center;
+  background-color: #181818;
+  color: white;
+  padding: 10px;
+}

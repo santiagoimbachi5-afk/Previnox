@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previnox - Login Profesional de Salud</title>
+  <!-- Conexión al CSS externo -->
+  <link rel="stylesheet" href="CSS/login-profesional.css">
+</head>
+<body>
+
+  <article class="card">
+    <h1>Acceso Profesional</h1>
+    <p>Gestión clínica y seguimiento médico</p>
+
+    <form onsubmit="ingresar(event)">
+      <label>Correo Profesional
+        <input type="email" placeholder="medico@previnox.com" required>
+      </label>
+      <label>Contraseña
+        <input type="password" placeholder="••••" required>
+      </label>
+      <button type="submit" class="btn-submit">Iniciar Sesión</button>
+    </form>
+
+    <button class="btn-back" onclick="window.location.href='index.html'">← Volver</button>
+  </article>
+
+
+<script src="Js/login-profesional.js"></script>
+
+</body>
+</html>
